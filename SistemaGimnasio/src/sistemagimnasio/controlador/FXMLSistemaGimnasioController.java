@@ -1,35 +1,101 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * FXMLSistemaGimnasioController es la clase que lleva el control de la interfaz FXMLSistemaGimnasio
+ * y se encarga del inicio de sesion de los empleados.
+ * 
+ * @author Mauricio Cruz Portilla
+ * @version 1.0
+ * @since 2019/05/18
  */
+
 package sistemagimnasio.controlador;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
 
-/**
- *
- * @author Mauricio
- */
-public class FXMLSistemaGimnasioController implements Initializable {
-    
+import engine.SQL;
+import java.io.IOException;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import sistemagimnasio.Empleado;
+import sistemagimnasio.EmpleadoDAO;
+import sistemagimnasio.Engine;
+import sistemagimnasio.IEmpleadoDAO;
+
+public class FXMLSistemaGimnasioController {
+
     @FXML
-    private Label label;
-    
+    private ResourceBundle resources;
+
     @FXML
-    private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
-        label.setText("Hello World!");
+    private URL location;
+
+    @FXML
+    private Button iniciarSesionButton;
+
+    @FXML
+    private PasswordField passwordTextField;
+
+    @FXML
+    private TextField usernameTextField;
+
+    private IEmpleadoDAO empleadoDAO = new EmpleadoDAO();
+
+    @FXML
+    void initialize() {
+        iniciarSesionButton.setOnAction(iniciarSesionButtonHandler());
     }
-    
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-    
+
+    /**
+     * Lleva a cabo la accion del boton de inicio de sesion, verificando con la base de datos
+     * si existe el usuario y realizando el inicio de sesion.
+     * 
+     * @return el evento del boton
+     */
+    private EventHandler<ActionEvent> iniciarSesionButtonHandler() {
+        return new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                if (usernameTextField.getText().isEmpty() || passwordTextField.getText().isEmpty()) {
+                    new Alert(AlertType.WARNING, "Debes completar todos los campos.").show();
+                    return;
+                }
+                Empleado empleado = empleadoDAO.getEmpleado(
+                    usernameTextField.getText(), passwordTextField.getText()
+                );
+                if (empleado.isLoaded()) {
+                    try {
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource(
+                            "/sistemagimnasio/interfaz/FXMLMenuPrincipal.fxml"
+                        ));
+                        Stage stage = new Stage();
+                        stage.setScene(new Scene((AnchorPane) loader.load()));
+                        stage.setTitle("Menú principal - Gimnasio");
+                        stage.show();
+                        Engine.iniciarSesionWindow = iniciarSesionButton.getScene().getWindow();
+                        Engine.empleadoSesion = empleado;
+                        iniciarSesionButton.getScene().getWindow().hide();
+                    } catch (IOException e) {
+                        new Alert(
+                            AlertType.ERROR, "Ocurrió un error al abrir el menú principal."
+                        ).show();
+                        System.out.println(e.getMessage());
+                    }
+                } else {
+                    new Alert(AlertType.ERROR, "Este empleado no existe.").show();
+                }
+            }
+        };
+    }
+
 }

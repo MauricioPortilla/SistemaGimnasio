@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `gimnasiodb`.`Cliente` (
   `nombre` VARCHAR(25) NOT NULL,
   `paterno` VARCHAR(30) NOT NULL,
   `materno` VARCHAR(30) NULL,
-  `telefono` INT NOT NULL,
+  `telefono` VARCHAR(10) NOT NULL,
   `fechaNacimiento` DATE NOT NULL,
   `domicilio` VARCHAR(60) NULL,
   PRIMARY KEY (`idCliente`),

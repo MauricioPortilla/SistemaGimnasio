@@ -5,10 +5,26 @@
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="200" prefWidth="320" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistemagimnasio.controlador.FXMLSistemaGimnasioController">
-    <children>
-        <Button layoutX="126" layoutY="90" text="Click Me!" onAction="#handleButtonAction" fx:id="button" />
-        <Label layoutX="126" layoutY="120" minHeight="16" minWidth="69" fx:id="label" />
-    </children>
+<AnchorPane id="AnchorPane" prefHeight="367.0" prefWidth="457.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="sistemagimnasio.controlador.FXMLSistemaGimnasioController">
+  <children>
+    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dfdfdf" height="257.0" layoutX="58.0" layoutY="73.0" stroke="BLACK" strokeType="INSIDE" width="343.0" />
+    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="BLACK" height="56.0" layoutX="0.0" layoutY="0.0" stroke="BLACK" strokeType="INSIDE" width="457.0" />
+    <Label layoutX="14.0" layoutY="14.0" text="Iniciar sesion" textFill="WHITE">
+      <font>
+        <Font size="21.0" />
+      </font>
+    </Label>
+    <Label layoutX="129.0" layoutY="122.0" text="Nombre de usuario">
+      <font>
+        <Font size="15.0" fx:id="x1" />
+      </font>
+    </Label>
+    <TextField fx:id="usernameTextField" layoutX="129.0" layoutY="142.0" prefWidth="200.0" />
+    <Label font="$x1" layoutX="129.0" layoutY="181.0" text="Contraseña" />
+    <PasswordField fx:id="passwordTextField" layoutX="129.0" layoutY="202.0" prefWidth="200.0" />
+    <Button fx:id="iniciarSesionButton" layoutX="180.0" layoutY="246.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="97.0" text="Iniciar sesion" />
+  </children>
 </AnchorPane>

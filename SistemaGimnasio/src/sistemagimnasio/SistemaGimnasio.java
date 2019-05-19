@@ -19,7 +19,7 @@ public class SistemaGimnasio extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLSistemaGimnasio.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("interfaz/FXMLSistemaGimnasio.fxml"));
         
         Scene scene = new Scene(root);
         
