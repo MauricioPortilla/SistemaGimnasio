@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="sistemagimnasio.controlador.ActualizarDatosController">
+  <children>
+    <Pane layoutX="0.0" layoutY="0.0" prefHeight="400.0" prefWidth="600.0">
+      <children>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="BLACK" height="44.0" layoutX="0.0" layoutY="0.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
+        <Label layoutX="14.0" layoutY="9.0" text="ActulizarDatos" textFill="WHITE">
+          <font>
+            <Font size="20.0" />
+          </font>
+        </Label>
+        <Button fx:id="actualizarButton" layoutX="377.0" layoutY="333.0" mnemonicParsing="false" prefHeight="26.6015625" prefWidth="80.0" text="Actualizar" />
+        <Button fx:id="cancelarButton" layoutX="496.0" layoutY="333.0" mnemonicParsing="false" prefHeight="26.6015625" prefWidth="80.0" text="Cancelar" />
+        <Label layoutX="20.0" layoutY="59.0" text="Nombre:" />
+        <Label layoutX="20.0" layoutY="106.0" text="Apellido Paterno:" />
+        <TextField fx:id="nombreTextField" layoutX="20.0" layoutY="75.0" prefWidth="200.0" />
+        <TextField fx:id="apellidoPaternoTextField" layoutX="20.0" layoutY="122.0" prefWidth="200.0" />
+        <Label layoutX="20.0" layoutY="155.0" text="Apellido Materno:" />
+        <TextField fx:id="apellidoMaternoTextField" layoutX="20.0" layoutY="171.0" prefWidth="200.0" />
+        <Label layoutX="21.0" layoutY="200.0" text="Fecha de Nacimiento:" />
+        <TextField fx:id="fechaNacimientoTextField" layoutX="21.0" layoutY="216.0" prefWidth="200.0" />
+        <Label layoutX="21.0" layoutY="245.0" text="Teléfono:" />
+        <TextField fx:id="telefonoTextField" layoutX="21.0" layoutY="261.0" prefWidth="200.0" />
+        <Label layoutX="320.0" layoutY="56.0" text="Domicilio:" />
+        <TextField fx:id="domicilioTextField" layoutX="320.0" layoutY="75.0" prefWidth="200.0" />
+        <Label layoutX="316.0" layoutY="103.0" text="Membresía:" />
+        <TextField fx:id="membresiaTextField" layoutX="320.0" layoutY="122.0" prefWidth="200.0" />
+      </children>
+    </Pane>
+  </children>
+</AnchorPane>
