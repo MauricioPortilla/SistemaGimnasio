@@ -103,7 +103,7 @@ public class FXMLMenuPrincipalController {
                     stage.setTitle("Modificar datos del cliente - Gimnasio");
                     FXMLActualizarDatosController controller = loader.
                         <FXMLActualizarDatosController>getController();
-                    Cliente cliente = new Cliente(1, 1, "Kary", "Espinoza", "Espi", "2281728192", LocalDate.of(2000, 1, 18), "Somewhere");
+                    Cliente cliente = new Cliente(1, 1, "Mauricio", "Cruz", "", "2281729201", LocalDate.of(1999, 11, 18), "Somewhere");
 					controller.initData(cliente);
                     stage.show();
                 } catch (IOException e) {
