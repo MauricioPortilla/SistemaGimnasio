@@ -1,4 +1,17 @@
 /**
+ * Sistema de Gimnasio
+ * Elaborado por (en orden alfabetico):
+ *  Cruz Portilla Mauricio
+ *  Gonzalez Hernandez Maria Saarayim
+ *  Hernandez Molinos Maria Jose
+ * 
+ * Mayo, 2019
+ */
+
+package engine;
+import java.util.ArrayList;
+
+/**
  * SQLRow es la clase que simula ser una fila de una
  * tabla de la base de datos.
  * 
@@ -6,10 +19,6 @@
  * @version 1.0
  * @since 2019/02/22
  */
-
-package engine;
-import java.util.ArrayList;
-
 public class SQLRow {
     private final ArrayList<SQLColumn<String, Object>> columnsData;
 

@@ -1,11 +1,11 @@
 /**
- * FXMLRegistrarClienteController es la clase que lleva el control de la interfaz 
- * FXMLRegistrarCliente y se encarga del registro de clientes nuevos del gimnasio.
+ * Sistema de Gimnasio
+ * Elaborado por (en orden alfabetico):
+ *  Cruz Portilla Mauricio
+ *  Gonzalez Hernandez Maria Saarayim
+ *  Hernandez Molinos Maria Jose
  * 
- * @author Mauricio Cruz Portilla
- * @author Maria Jose Hernandez Molinos
- * @version 1.0
- * @since 2019/05/19
+ * Mayo, 2019
  */
 
 package sistemagimnasio.controlador;
@@ -13,7 +13,10 @@ package sistemagimnasio.controlador;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -31,7 +34,16 @@ import sistemagimnasio.IMembresiaDAO;
 import sistemagimnasio.Membresia;
 import sistemagimnasio.MembresiaDAO;
 
-
+/**
+ * FXMLRegistrarClienteController es la clase que lleva el control de la
+ * interfaz FXMLRegistrarCliente y se encarga del registro de clientes nuevos
+ * del gimnasio.
+ * 
+ * @author Mauricio Cruz Portilla
+ * @author Maria Jose Hernandez Molinos
+ * @version 1.0
+ * @since 2019/05/19
+ */
 public class FXMLRegistrarClienteController {
 
     @FXML
@@ -56,7 +68,7 @@ public class FXMLRegistrarClienteController {
     private TextField fechaNacimientoTextField;
 
     @FXML
-    private ComboBox membresiaComboBox;
+    private ComboBox<Membresia> membresiaComboBox;
 
     @FXML
     private TextField nombreTextField;
@@ -76,6 +88,15 @@ public class FXMLRegistrarClienteController {
     void initialize() {
         cargarMembresias();
         registrarButton.setOnAction(registrarButtonHandler());
+        cancelarButton.setOnAction(cancelarButtonHandler());
+        telefonoTextField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (!newValue.matches("\\d*")) {
+                    telefonoTextField.setText(newValue.replaceAll("[^\\d]", ""));
+                }
+            }
+        });
     }
 
     /**
@@ -96,7 +117,19 @@ public class FXMLRegistrarClienteController {
                     telefonoTextField.getText().isEmpty() ||
                     membresiaComboBox.getSelectionModel().getSelectedItem() == null
                 ) {
-                    new Alert(AlertType.WARNING, "Debes completar los campos faltantes.").show();
+                    new Alert(AlertType.WARNING, "Faltan campos por llenar.").show();
+                    return;
+                }
+                LocalDate fechaNacimientoToInsert = LocalDate.now();
+                try {
+                    fechaNacimientoToInsert = LocalDate.parse(
+                        fechaNacimientoTextField.getText(), 
+                        DateTimeFormatter.ofPattern("d/M/uuuu")
+                    );
+                } catch (DateTimeParseException e) {
+                    new Alert(
+                        AlertType.WARNING, "Debes ingresar una fecha de nacimiento válida"
+                    ).show();
                     return;
                 }
                 boolean didInsert = clienteDAO.insertCliente(
@@ -108,19 +141,30 @@ public class FXMLRegistrarClienteController {
                         apellidoPaternoTextField.getText(), 
                         apellidoMaternoTextField.getText(), 
                         telefonoTextField.getText(), 
-                        LocalDate.parse(
-                            fechaNacimientoTextField.getText(), 
-                            DateTimeFormatter.ofPattern("dd/MM/uuuu")
-                        ), 
+                        fechaNacimientoToInsert, 
                         domicilioTextField.getText()
                     )
                 );
                 if (didInsert) {
-                    new Alert(AlertType.INFORMATION, "Cliente registrado").show();
+                    new Alert(AlertType.INFORMATION, "Cliente registrado exitosamente").show();
                     ((Stage) registrarButton.getScene().getWindow()).close();
                 } else {
-                    new Alert(AlertType.ERROR, "Ocurrió un error al registrar el cliente.").show();
+                    new Alert(AlertType.ERROR, "Ocurrió un error al guardar los datos.").show();
                 }
+            }
+        };
+    }
+
+    /**
+     * Lleva a cabo la accion del boton de cancelar. Cierra la ventana actual.
+     * 
+     * @return el evento del boton
+     */
+    private EventHandler<ActionEvent> cancelarButtonHandler() {
+        return new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                ((Stage) cancelarButton.getScene().getWindow()).close();
             }
         };
     }

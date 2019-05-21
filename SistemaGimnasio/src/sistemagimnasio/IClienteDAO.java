@@ -1,13 +1,23 @@
 /**
- * IClienteDAO es la interfaz que lleva a cabo el control de los clientes en la base de datos.
+ * Sistema de Gimnasio
+ * Elaborado por (en orden alfabetico):
+ *  Cruz Portilla Mauricio
+ *  Gonzalez Hernandez Maria Saarayim
+ *  Hernandez Molinos Maria Jose
+ * 
+ * Mayo, 2019
+ */
+
+package sistemagimnasio;
+
+/**
+ * IClienteDAO es la interfaz que lleva a cabo el control de los clientes en la
+ * base de datos.
  * 
  * @author Mauricio Cruz Portilla
  * @version 1.0
  * @since 2019/05/19
  */
-
-package sistemagimnasio;
-
 public interface IClienteDAO {
     
     /**

@@ -1,14 +1,14 @@
 /**
- * MembresiaDAO es la clase que lleva a cabo el control de las membresias en la base de datos.
+ * Sistema de Gimnasio
+ * Elaborado por (en orden alfabetico):
+ *  Cruz Portilla Mauricio
+ *  Gonzalez Hernandez Maria Saarayim
+ *  Hernandez Molinos Maria Jose
  * 
- * @author Mauricio Cruz Portilla
- * @version 1.0
- * @since 2019/05/19
+ * Mayo, 2019
  */
 
 package sistemagimnasio;
-
-import java.util.ArrayList;
 
 import engine.SQL;
 import engine.SQLRow;
@@ -16,6 +16,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 
+/**
+ * MembresiaDAO es la clase que lleva a cabo el control de las membresias en la
+ * base de datos.
+ * 
+ * @author Mauricio Cruz Portilla
+ * @version 1.0
+ * @since 2019/05/19
+ */
 public class MembresiaDAO implements IMembresiaDAO {
     private final ObservableList<Membresia> membresias = FXCollections.observableArrayList();
 

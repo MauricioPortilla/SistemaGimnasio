@@ -1,14 +1,24 @@
 /**
+ * Sistema de Gimnasio
+ * Elaborado por (en orden alfabetico):
+ *  Cruz Portilla Mauricio
+ *  Gonzalez Hernandez Maria Saarayim
+ *  Hernandez Molinos Maria Jose
+ * 
+ * Mayo, 2019
+ */
+
+package sistemagimnasio;
+
+import java.time.LocalDate;
+
+/**
  * Cliente es la clase que lleva la informacion de un cliente del gimnasio.
  * 
  * @author Mauricio Cruz Portilla
  * @version 1.0
  * @since 2019/05/19
  */
-package sistemagimnasio;
-
-import java.time.LocalDate;
-
 public class Cliente {
     private int id;
     private int idmembresia;
@@ -42,6 +52,60 @@ public class Cliente {
         this.materno = materno;
         this.telefono = telefono;
         this.fechaNacimiento = fechaNacimiento;
+        this.domicilio = domicilio;
+    }
+
+    /**
+     * Establece un nuevo nombre al cliente
+     * 
+     * @param nombre nuevo nombre
+     */
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    /**
+     * Establece un nuevo paterno al cliente
+     * 
+     * @param paterno nuevo paterno
+     */
+    public void setPaterno(String paterno) {
+        this.paterno = paterno;
+    }
+
+    /**
+     * Establece un nuevo materno al cliente
+     * 
+     * @param materno nuevo materno
+     */
+    public void setMaterno(String materno) {
+        this.materno = materno;
+    }
+
+    /**
+     * Establece un nuevo telefono al cliente
+     * 
+     * @param telefono nuevo telefono
+     */
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    /**
+     * Establece una nueva fecha de nacimiento al cliente
+     * 
+     * @param fechaNacimiento nueva fecha de nacimiento
+     */
+    public void setFechaNacimiento(LocalDate fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
+    }
+
+    /**
+     * Establece un nuevo domicilio al cliente
+     * 
+     * @param domicilio nuevo domicilio
+     */
+    public void setDomicilio(String domicilio) {
         this.domicilio = domicilio;
     }
 

@@ -1,15 +1,24 @@
 /**
- * IMembresiaDAO es la interfaz que lleva a cabo el control de las membresias en la base de datos.
+ * Sistema de Gimnasio
+ * Elaborado por (en orden alfabetico):
+ *  Cruz Portilla Mauricio
+ *  Gonzalez Hernandez Maria Saarayim
+ *  Hernandez Molinos Maria Jose
  * 
- * @author Mauricio Cruz Portilla
- * @version 1.0
- * @since 2019/05/19
+ * Mayo, 2019
  */
 
 package sistemagimnasio;
 
 import javafx.collections.ObservableList;
 
+/**
+ * IMembresiaDAO es la interfaz que lleva a cabo el control de las membresias en la base de datos.
+ * 
+ * @author Mauricio Cruz Portilla
+ * @version 1.0
+ * @since 2019/05/19
+ */
 public interface IMembresiaDAO {
     /**
      * Retorna una lista observable de las membresias de la base de datos.

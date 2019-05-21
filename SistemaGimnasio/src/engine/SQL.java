@@ -1,10 +1,11 @@
 /**
- * SQL es la clase que permite llevar a cabo las consultas en la
- * base de datos.
+ * Sistema de Gimnasio
+ * Elaborado por (en orden alfabetico):
+ *  Cruz Portilla Mauricio
+ *  Gonzalez Hernandez Maria Saarayim
+ *  Hernandez Molinos Maria Jose
  * 
- * @author Mauricio Cruz Portilla
- * @version 2.0
- * @since 2019/02/22
+ * Mayo, 2019
  */
 
 package engine;
@@ -18,6 +19,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 
+/**
+ * SQL es la clase que permite llevar a cabo las consultas en la
+ * base de datos.
+ * 
+ * @author Mauricio Cruz Portilla
+ * @version 2.0
+ * @since 2019/02/22
+ */
 public class SQL {
     public static Statement statement;
 

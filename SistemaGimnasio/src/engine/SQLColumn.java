@@ -1,4 +1,16 @@
 /**
+ * Sistema de Gimnasio
+ * Elaborado por (en orden alfabetico):
+ *  Cruz Portilla Mauricio
+ *  Gonzalez Hernandez Maria Saarayim
+ *  Hernandez Molinos Maria Jose
+ * 
+ * Mayo, 2019
+ */
+
+package engine;
+
+/**
  * SQLColumn es la clase que simula ser una columna de una
  * tabla de la base de datos.
  * 
@@ -6,9 +18,6 @@
  * @version 1.0
  * @since 2019/02/22
  */
-
-package engine;
-
 public class SQLColumn<K, V> {
     private final K key;
     private final V value;

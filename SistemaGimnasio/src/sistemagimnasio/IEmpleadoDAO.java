@@ -1,13 +1,22 @@
 /**
- * IEmpleadoDAO es la interfaz que lleva a cabo el control de los empleados en la base de datos.
+ * Sistema de Gimnasio
+ * Elaborado por (en orden alfabetico):
+ *  Cruz Portilla Mauricio
+ *  Gonzalez Hernandez Maria Saarayim
+ *  Hernandez Molinos Maria Jose
  * 
- * @author Mauricio Cruz Portilla
- * @version 1.0
- * @since 2019/05/19
+ * Mayo, 2019
  */
 
 package sistemagimnasio;
 
+/**
+ * IEmpleadoDAO es la interfaz que lleva a cabo el control de los empleados en la base de datos.
+ *      
+ * @author Mauricio Cruz Portilla
+ * @version 1.0
+ * @since 2019/05/19
+ */
 public interface IEmpleadoDAO {
     /**
      * Retorna un empleado de la base de datos.

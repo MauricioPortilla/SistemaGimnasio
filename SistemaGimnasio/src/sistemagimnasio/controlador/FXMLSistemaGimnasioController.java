@@ -1,10 +1,11 @@
 /**
- * FXMLSistemaGimnasioController es la clase que lleva el control de la interfaz FXMLSistemaGimnasio
- * y se encarga del inicio de sesion de los empleados.
+ * Sistema de Gimnasio
+ * Elaborado por (en orden alfabetico):
+ *  Cruz Portilla Mauricio
+ *  Gonzalez Hernandez Maria Saarayim
+ *  Hernandez Molinos Maria Jose
  * 
- * @author Mauricio Cruz Portilla
- * @version 1.0
- * @since 2019/05/18
+ * Mayo, 2019
  */
 
 package sistemagimnasio.controlador;
@@ -32,6 +33,14 @@ import sistemagimnasio.EmpleadoDAO;
 import sistemagimnasio.Engine;
 import sistemagimnasio.IEmpleadoDAO;
 
+/**
+ * FXMLSistemaGimnasioController es la clase que lleva el control de la interfaz
+ * FXMLSistemaGimnasio y se encarga del inicio de sesion de los empleados.
+ * 
+ * @author Mauricio Cruz Portilla
+ * @version 1.0
+ * @since 2019/05/18
+ */
 public class FXMLSistemaGimnasioController {
 
     @FXML

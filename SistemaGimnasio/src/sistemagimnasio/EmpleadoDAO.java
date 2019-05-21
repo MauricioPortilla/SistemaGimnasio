@@ -1,9 +1,11 @@
 /**
- * EmpleadoDAO es la clase que lleva a cabo el control de los empleados en la base de datos.
+ * Sistema de Gimnasio
+ * Elaborado por (en orden alfabetico):
+ *  Cruz Portilla Mauricio
+ *  Gonzalez Hernandez Maria Saarayim
+ *  Hernandez Molinos Maria Jose
  * 
- * @author Mauricio Cruz Portilla
- * @version 1.0
- * @since 2019/05/19
+ * Mayo, 2019
  */
 
 package sistemagimnasio;
@@ -11,6 +13,14 @@ package sistemagimnasio;
 import engine.SQL;
 import java.util.ArrayList;
 
+/**
+ * EmpleadoDAO es la clase que lleva a cabo el control de los empleados en la
+ * base de datos.
+ * 
+ * @author Mauricio Cruz Portilla
+ * @version 1.0
+ * @since 2019/05/19
+ */
 public class EmpleadoDAO implements IEmpleadoDAO {
     
     /**

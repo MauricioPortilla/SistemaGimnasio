@@ -1,10 +1,11 @@
 /**
- * Database es la clase que lleva a cabo la conexion a la
- * base de datos.
+ * Sistema de Gimnasio
+ * Elaborado por (en orden alfabetico):
+ *  Cruz Portilla Mauricio
+ *  Gonzalez Hernandez Maria Saarayim
+ *  Hernandez Molinos Maria Jose
  * 
- * @author Mauricio Cruz Portilla
- * @version 1.0
- * @since 2019/02/22
+ * Mayo, 2019
  */
 
 package engine;
@@ -12,6 +13,14 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+/**
+ * Database es la clase que lleva a cabo la conexion a la
+ * base de datos.
+ * 
+ * @author Mauricio Cruz Portilla
+ * @version 1.0
+ * @since 2019/02/22
+ */
 public class Database {
     private Connection connection;
 

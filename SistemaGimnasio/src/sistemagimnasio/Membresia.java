@@ -1,12 +1,22 @@
 /**
+ * Sistema de Gimnasio
+ * Elaborado por (en orden alfabetico):
+ *  Cruz Portilla Mauricio
+ *  Gonzalez Hernandez Maria Saarayim
+ *  Hernandez Molinos Maria Jose
+ * 
+ * Mayo, 2019
+ */
+
+package sistemagimnasio;
+
+/**
  * Membresia es la clase que lleva la informacion de una membresia de la base de datos.
  * 
  * @author Mauricio Cruz Portilla
  * @version 1.0
  * @since 2019/05/19
  */
-package sistemagimnasio;
-
 public class Membresia {
     private int id;
     private String nombre;
