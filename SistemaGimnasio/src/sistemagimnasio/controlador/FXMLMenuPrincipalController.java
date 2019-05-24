@@ -48,11 +48,14 @@ public class FXMLMenuPrincipalController {
 
     @FXML
     private Button registrarClienteButton;
+    
+    @FXML private Button buttonRegistrarPago;
 
     @FXML
     void initialize() {
         registrarClienteButton.setOnAction(registrarClienteButtonHandler());
         modificarClienteButton.setOnAction(modificarClienteButtonHandler());
+        
     }
 
     /**
@@ -84,6 +87,8 @@ public class FXMLMenuPrincipalController {
         };
     }
 
+    
+    
     /**
      * Lleva a cabo la accion del boton de modificar cliente. Abre la ventana de modificar datos del
      * cliente.

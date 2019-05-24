@@ -5,10 +5,16 @@
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="sistemagimnasio.controlador.FXMLMenuPrincipalController">
   <children>
-    <Button fx:id="registrarClienteButton" layoutX="69.0" layoutY="127.0" mnemonicParsing="false" text="Registrar cliente" />
-    <Button fx:id="modificarClienteButton" layoutX="69.0" layoutY="165.0" mnemonicParsing="false" text="Modificar datos de cliente" />
+    <Button fx:id="registrarClienteButton" layoutX="227.0" layoutY="82.0" mnemonicParsing="false" text="Registrar cliente">
+      <font>
+        <Font size="18.0" fx:id="x1" />
+      </font>
+    </Button>
+    <Button fx:id="modificarClienteButton" font="$x1" layoutX="188.0" layoutY="145.0" mnemonicParsing="false" text="Modificar datos de cliente" />
+    <Button fx:id="buttonRegistrarPago" font="$x1" layoutX="227.0" layoutY="200.0" mnemonicParsing="false" text="Registrar pago" />
   </children>
 </AnchorPane>
