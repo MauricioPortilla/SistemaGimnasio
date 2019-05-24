@@ -19,17 +19,17 @@
             <Font size="20.0" />
           </font>
         </Label>
-        <Button id="actualizarButton" fx:id="buttonAceptar" layoutX="270.0" layoutY="300.0" minHeight="28.94140625" mnemonicParsing="false" prefHeight="28.94140625" prefWidth="107.0" text="Aceptar">
+        <Button id="actualizarButton" fx:id="aceptarButton" layoutX="270.0" layoutY="293.0" minHeight="28.94140625" mnemonicParsing="false" onAction="#accionAceptar" prefHeight="40.0" prefWidth="107.0" text="Aceptar">
           <font>
             <Font size="18.0" fx:id="x1" />
           </font>
         </Button>
-        <Button id="cancelarButton" fx:id="ButtonCancelar" font="$x1" layoutX="413.0" layoutY="300.0" minHeight="28.94140625" mnemonicParsing="false" prefHeight="28.94140625" prefWidth="117.0" text="Cancelar" />
+        <Button fx:id="cancelarButton" font="$x1" layoutX="413.0" layoutY="293.0" minHeight="28.94140625" mnemonicParsing="false" onAction="#accionCancelar" prefHeight="40.0" prefWidth="117.0" text="Cancelar" />
         <Label font="$x1" layoutX="23.0" layoutY="63.0" text="Nombre:" />
         <Label layoutX="108.0" layoutY="69.0" text="" />
         <Label fx:id="labelNombre" layoutX="143.0" layoutY="71.0" text="...." />
         <Label font="$x1" layoutX="23.0" layoutY="104.0" text="Membresía:" />
-        <Label layoutX="143.0" layoutY="110.0" text="..." />
+        <Label fx:id="labelMembresia" layoutX="143.0" layoutY="110.0" text="..." />
         <Label font="$x1" layoutX="20.0" layoutY="150.0" text="Fecha:" />
         <ComboBox fx:id="fechaComboBox" layoutX="20.0" layoutY="182.0" prefHeight="23.94140625" prefWidth="152.0">
           <items>
