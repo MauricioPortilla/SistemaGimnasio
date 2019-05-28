@@ -161,6 +161,69 @@ public class SQL {
         return status;
     }
 
+    public static int executeTransactionUpdate(
+        String sql, ArrayList<Object> parameters, 
+        String sqlAfterFirst, ArrayList<Object> parameters2
+    ) {
+        int status = -1;
+        Connection conn = null;
+        PreparedStatement ps = null;
+        PreparedStatement ps2 = null;
+        try {
+            conn = new Database().getConnection();
+            conn.setAutoCommit(false);
+            ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            for (int i = 0; i < parameters.size(); i++) {
+                ps.setObject(i + 1, parameters.get(i));
+            }
+            status = ps.executeUpdate();
+            int idReturned = 0;
+            ResultSet rs = ps.getGeneratedKeys();
+            if (rs.next()) {
+                idReturned = rs.getInt(1);
+            }
+            if (status == 1) {
+                ps2 = conn.prepareStatement(sqlAfterFirst, Statement.RETURN_GENERATED_KEYS);
+                for (int i = 0; i < parameters2.size(); i++) {
+                    if (parameters2.get(i).toString().equals("RETURNED_ID")) {
+                        ps2.setObject(i + 1, idReturned);
+                    } else {
+                        ps2.setObject(i + 1, parameters2.get(i));
+                    }
+                }
+                ps2.executeUpdate();
+                conn.commit();
+            } else {
+                status = -1;
+                conn.rollback();
+            }
+        } catch (SQLException e) {
+            if (conn != null) {
+                try {
+                    status = -1;
+                    conn.rollback();
+                } catch (SQLException e1) {
+                    System.out.println("Error transaction rollback -> " + e1.getMessage());
+                }
+            }
+        } finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+                if (ps2 != null) {
+                    ps2.close();
+                }
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+        return status;
+    }
+
     /**
      * Convierte un ResultSet en una lista con los datos
      * de cada fila.

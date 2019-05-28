@@ -24,16 +24,29 @@ public class ServicioDAO implements IServicioDAO {
     
     @Override
     public boolean insertServicio(Servicio servicio) {
-        if (SQL.executeUpdate(
-            "INSERT INTO servicio VALUES (NULL, ?, ?, ?)",
-            new ArrayList<Object>() {
-                {
-                    add(servicio.getNombre());
-                    add(servicio.getCosto());
-                    add(servicio.getInstructor());
-                }
+        ArrayList<Object> parameters = new ArrayList<>();
+        parameters.add(servicio.getNombre());
+        parameters.add(servicio.getCosto());
+        parameters.add(servicio.getInstructor());
+        ArrayList<Object> parameters2 = new ArrayList<>();
+        String sqlSentence2 = "INSERT INTO horarioServicio VALUES ";
+        for (HorarioServicio horario : servicio.getHorariosServicios()) {
+            if (!servicio.getHorariosServicios().get(0).equals(horario)) {
+                sqlSentence2 += ",";
             }
-        ) == 1) { // 1 indica que hay 1 fila afectada
+            sqlSentence2 += "(NULL, ?, ?, ?, ?)";
+            parameters2.add("RETURNED_ID");
+            parameters2.add(horario.getDia());
+            System.out.println(horario.getDia());
+            parameters2.add(horario.getHoraInicio());
+            System.out.println(horario.getHoraInicio());
+            parameters2.add(horario.getHoraFin());
+            System.out.println(horario.getHoraFin());
+        }
+        if (SQL.executeTransactionUpdate(
+            "INSERT INTO servicio VALUES (NULL, ?, ?, ?);", parameters, 
+            sqlSentence2, parameters2
+        ) == 1) {
             return true;
         }
         return false;

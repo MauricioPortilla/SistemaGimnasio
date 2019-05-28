@@ -5,55 +5,64 @@
  */
 package sistemagimnasio;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Saarayim
  */
 public class Servicio {
-  private int id;
-  private String nombre;
-  private String costo;
-  private String instructor;
-  
-  public Servicio (int id, String nombre, String costo, String instructor){
-    this.id=id;
-    this.nombre=nombre;
-    this.costo=costo;
-    this.instructor=instructor;
-  }
 
-  public int getId() {
-    return id;
-  }
+    private int id;
+    private String nombre;
+    private String costo;
+    private String instructor;
+    private ArrayList<HorarioServicio> horarios;
 
-  public String getNombre() {
-    return nombre;
-  }
+    public Servicio(
+        int id, String nombre, String costo, String instructor, ArrayList<HorarioServicio> horarios
+    ) {
+        this.id = id;
+        this.nombre = nombre;
+        this.costo = costo;
+        this.instructor = instructor;
+        this.horarios = horarios;
+    }
 
-  public String getCosto() {
-    return costo;
-  }
+    public int getId() {
+        return id;
+    }
 
-  public String getInstructor() {
-    return instructor;
-  }
+    public String getNombre() {
+        return nombre;
+    }
 
-  public void setId(int id) {
-    this.id = id;
-  }
+    public String getCosto() {
+        return costo;
+    }
 
-  public void setNombre(String nombre) {
-    this.nombre = nombre;
-  }
+    public String getInstructor() {
+        return instructor;
+    }
 
-  public void setCosto(String costo) {
-    this.costo = costo;
-  }
+    public ArrayList<HorarioServicio> getHorariosServicios() {
+        return horarios;
+    }
 
-  public void setInstructor(String instructor) {
-    this.instructor = instructor;
-  }
-  
-  
-  
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setCosto(String costo) {
+        this.costo = costo;
+    }
+
+    public void setInstructor(String instructor) {
+        this.instructor = instructor;
+    }
+
 }
