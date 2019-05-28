@@ -45,7 +45,7 @@
         <TextField fx:id="textViernes" layoutX="373.0" layoutY="252.0" prefWidth="200.0" />
         <TextField fx:id="textSabado" layoutX="373.0" layoutY="287.0" prefWidth="200.0" />
         <Button fx:id="aceptarButton" layoutX="300.0" layoutY="353.0" mnemonicParsing="false" prefHeight="20.9609375" text="Aceptar" />
-        <Button fx:id="cancelarButton" layoutX="431.0" layoutY="354.0" mnemonicParsing="false" text="Cancelar" />
+        <Button fx:id="cancelarButton" layoutX="431.0" layoutY="354.0" mnemonicParsing="false" onAction="#accionCancelar" text="Cancelar" />
       </children>
     </Pane>
   </children>
