@@ -75,14 +75,14 @@ public class FXMLSistemaGimnasioController {
         return new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                if (usernameTextField.getText().isEmpty() || passwordTextField.getText().isEmpty()) {
+              /*  if (usernameTextField.getText().isEmpty() || passwordTextField.getText().isEmpty()) {
                     new Alert(AlertType.WARNING, "Debes completar todos los campos.").show();
                     return;
-                }
+                }*/
                 Empleado empleado = empleadoDAO.getEmpleado(
                     usernameTextField.getText(), passwordTextField.getText()
                 );
-                if (empleado.isLoaded()) {
+               // if (empleado.isLoaded()) {
                     try {
                         FXMLLoader loader = new FXMLLoader(getClass().getResource(
                             "/sistemagimnasio/interfaz/FXMLMenuPrincipal.fxml"
@@ -100,9 +100,9 @@ public class FXMLSistemaGimnasioController {
                         ).show();
                         System.out.println(e.getMessage());
                     }
-                } else {
+              /*  } else {
                     new Alert(AlertType.ERROR, "Este empleado no existe.").show();
-                }
+                }*/
             }
         };
     }

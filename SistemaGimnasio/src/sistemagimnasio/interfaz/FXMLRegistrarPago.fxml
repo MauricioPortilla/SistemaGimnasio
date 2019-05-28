@@ -19,7 +19,7 @@
             <Font size="20.0" />
           </font>
         </Label>
-        <Button id="actualizarButton" fx:id="aceptarButton" layoutX="270.0" layoutY="293.0" minHeight="28.94140625" mnemonicParsing="false" onAction="#accionAceptar" prefHeight="40.0" prefWidth="107.0" text="Aceptar">
+        <Button id="actualizarButton" fx:id="aceptarButton" layoutX="270.0" layoutY="293.0" minHeight="28.94140625" mnemonicParsing="false" prefHeight="40.0" prefWidth="107.0" text="Aceptar">
           <font>
             <Font size="18.0" fx:id="x1" />
           </font>
@@ -31,29 +31,11 @@
         <Label font="$x1" layoutX="23.0" layoutY="104.0" text="Membresía:" />
         <Label fx:id="labelMembresia" layoutX="143.0" layoutY="110.0" text="..." />
         <Label font="$x1" layoutX="20.0" layoutY="150.0" text="Fecha:" />
-        <ComboBox fx:id="fechaComboBox" layoutX="20.0" layoutY="182.0" prefHeight="23.94140625" prefWidth="152.0">
-          <items>
-            <FXCollections fx:factory="observableArrayList">
-              <String fx:value="Item 1" />
-              <String fx:value="Item 2" />
-              <String fx:value="Item 3" />
-            </FXCollections>
-          </items>
-        </ComboBox>
         <Label font="$x1" layoutX="23.0" layoutY="222.0" text="Mensualidades a pagar" />
-        <ComboBox fx:id="mensuPagarComboBox" layoutX="20.0" layoutY="261.0" prefHeight="26.6015625" prefWidth="152.0">
-          <items>
-            <FXCollections fx:factory="observableArrayList">
-              <String fx:value="Item 1" />
-              <String fx:value="Item 2" />
-              <String fx:value="Item 3" />
-            </FXCollections>
-          </items>
-        </ComboBox>
-        <Label font="$x1" layoutX="251.0" layoutY="150.0" text="Cantidad a pagar:" />
-        <Label fx:id="labelAPagar" layoutX="405.0" layoutY="158.0" text="..." />
-        <Label font="$x1" layoutX="251.0" layoutY="222.0" text="Registrar pago" />
-        <TextField fx:id="textPago" layoutX="251.0" layoutY="261.0" prefHeight="26.6015625" prefWidth="209.0" />
+        <Label font="$x1" layoutX="356.0" layoutY="138.0" text="Registrar pago" />
+        <TextField fx:id="textPago" layoutX="324.0" layoutY="189.0" prefHeight="26.6015625" prefWidth="209.0" />
+        <TextField fx:id="textFecha" layoutX="20.0" layoutY="180.0" prefWidth="200.0" />
+        <TextField id="textMensualidadePagar" fx:id="textMensualidadPagar" layoutX="23.0" layoutY="266.0" prefWidth="200.0" />
       </children>
     </Pane>
   </children>
