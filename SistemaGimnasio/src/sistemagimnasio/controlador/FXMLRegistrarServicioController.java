@@ -17,6 +17,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import sistemagimnasio.Cliente;
@@ -39,6 +40,18 @@ public class FXMLRegistrarServicioController implements Initializable {
   @FXML private TextField textNombre;
   @FXML private TextField textCosto;
   @FXML private TextField textInstructor;
+  @FXML private TextField textLunes;
+  @FXML private TextField textMartes;
+  @FXML private TextField textMiercoles;
+  @FXML private TextField textJueves;
+  @FXML private TextField textViernes;
+  @FXML private TextField textSabado;
+  @FXML private RadioButton radioLunes;
+  @FXML private RadioButton radioMartes;
+  @FXML private RadioButton radioMiercoles;
+  @FXML private RadioButton radioJueves;
+  @FXML private RadioButton radioViernes;
+  @FXML private RadioButton radioSabado;
   private IServicioDAO servicioDAO = new ServicioDAO();
   
   @FXML
