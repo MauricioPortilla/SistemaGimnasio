@@ -10,6 +10,8 @@
 
 package sistemagimnasio;
 
+import java.util.ArrayList;
+
 import engine.SQL;
 import engine.SQLRow;
 import javafx.collections.FXCollections;
@@ -31,6 +33,29 @@ public class MembresiaDAO implements IMembresiaDAO {
      * Crea una instancia MembresiaDAO.
      */
     public MembresiaDAO() {
+    }
+
+    @Override
+    public Membresia getMembresia(int id) {
+        Membresia membresia = new Membresia();
+        SQL.executeQuery(
+            "SELECT * FROM membresia WHERE idMembresia = ? LIMIT 1", 
+            new ArrayList<Object>() {
+                {
+                    add(id);
+                }
+            }, (result) -> {
+                for (SQLRow row : result) {
+                    membresia.setId((int) row.getColumnData("idMembresia"));
+                    membresia.setNombre(row.getColumnData("nombre").toString());
+                    membresia.setCosto((int) row.getColumnData("costo"));
+                }
+                return true;
+            }, () -> {
+                return false;
+            }
+        );
+        return membresia;
     }
 
     @Override

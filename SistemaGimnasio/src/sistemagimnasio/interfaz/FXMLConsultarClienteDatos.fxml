@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="342.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="sistemagimnasio.controlador.FXMLConsultarClienteDatosController">
+  <children>
+    <Rectangle arcHeight="5.0" arcWidth="5.0" height="150.0" layoutX="14.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="572.0">
+      <fill>
+        <Color blue="0.875" green="0.875" red="0.875" fx:id="x3" />
+      </fill>
+    </Rectangle>
+    <Label layoutX="241.0" layoutY="23.0" text="Datos del cliente">
+      <font>
+        <Font name="System Bold" size="15.0" fx:id="x2" />
+      </font>
+    </Label>
+    <Label fx:id="nombreLabel" layoutX="31.0" layoutY="46.0" text="Nombre:">
+      <font>
+        <Font size="14.0" fx:id="x1" />
+      </font>
+    </Label>
+    <Label fx:id="paternoLabel" font="$x1" layoutX="31.0" layoutY="68.0" text="Apellido paterno:" />
+    <Label fx:id="maternoLabel" font="$x1" layoutX="31.0" layoutY="89.0" text="Apellido materno:" />
+    <Label fx:id="telefonoLabel" font="$x1" layoutX="31.0" layoutY="111.0" text="Teléfono:" />
+    <Button fx:id="modificarButton" layoutX="504.0" layoutY="136.0" mnemonicParsing="false" text="Modificar" />
+    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="$x3" height="126.0" layoutX="14.0" layoutY="200.0" stroke="BLACK" strokeType="INSIDE" width="572.0" />
+    <Label font="$x2" layoutX="220.0" layoutY="209.0" text="Datos de la membresía" />
+    <Label fx:id="membresiaLabel" font="$x1" layoutX="31.0" layoutY="242.0" text="Membresía:" />
+    <Label id="fechaNacimientoLabel" fx:id="fechaVencimientoLabel" font="$x1" layoutX="31.0" layoutY="264.0" text="Fecha de vencimiento:" />
+    <Button fx:id="actualizarButton" layoutX="504.0" layoutY="292.0" mnemonicParsing="false" text="Actualizar" />
+  </children>
+</AnchorPane>

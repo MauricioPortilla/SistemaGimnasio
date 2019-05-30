@@ -20,6 +20,15 @@ import javafx.collections.ObservableList;
  * @since 2019/05/19
  */
 public interface IMembresiaDAO {
+
+    /**
+     * Retorna una membresia de la base de datos con base en su identificador.
+     * 
+     * @param id identificador de la membresia
+     * @return la membresia
+     */
+    public Membresia getMembresia(int id);
+
     /**
      * Retorna una lista observable de las membresias de la base de datos.
      * 

@@ -2,6 +2,43 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/Mauricio/Desktop/SistemaGimnasio/SistemaGimnasio/src/sistemagimnasio/controlador/FXMLSistemaGimnasioController.java</file>
+            <file>file:/C:/Users/Mauricio/Desktop/SistemaGimnasio/SistemaGimnasio/src/sistemagimnasio/controlador/FXMLConsultarClienteDatosController.java</file>
+            <file>file:/C:/Users/Mauricio/Desktop/SistemaGimnasio/SistemaGimnasio/src/sistemagimnasio/Engine.java</file>
+            <file>file:/C:/Users/Mauricio/Desktop/SistemaGimnasio/SistemaGimnasio/src/sistemagimnasio/IMembresiaDAO.java</file>
+            <file>file:/C:/Users/Mauricio/Desktop/SistemaGimnasio/SistemaGimnasio/src/sistemagimnasio/HorarioServicioDAO.java</file>
+            <file>file:/C:/Users/Mauricio/Desktop/SistemaGimnasio/SistemaGimnasio/src/sistemagimnasio/controlador/FXMLMenuPrincipalController.java</file>
+            <file>file:/C:/Users/Mauricio/Desktop/SistemaGimnasio/SistemaGimnasio/src/sistemagimnasio/PagoDAO.java</file>
+            <file>file:/C:/Users/Mauricio/Desktop/SistemaGimnasio/SistemaGimnasio/src/sistemagimnasio/controlador/FXMLRegistrarServicioController.java</file>
+            <file>file:/C:/Users/Mauricio/Desktop/SistemaGimnasio/SistemaGimnasio/nbproject/jfx-impl.xml</file>
+            <file>file:/C:/Users/Mauricio/Desktop/SistemaGimnasio/SistemaGimnasio/src/sistemagimnasio/HorarioServicio.java</file>
+            <file>file:/C:/Users/Mauricio/Desktop/SistemaGimnasio/SistemaGimnasio/src/sistemagimnasio/ServicioDAO.java</file>
+            <file>file:/C:/Users/Mauricio/Desktop/SistemaGimnasio/SistemaGimnasio/src/sistemagimnasio/interfaz/FXMLRegistrarCliente.fxml</file>
+            <file>file:/C:/Users/Mauricio/Desktop/SistemaGimnasio/SistemaGimnasio/src/sistemagimnasio/interfaz/FXMLMenuPrincipal.fxml</file>
+            <file>file:/C:/Users/Mauricio/Desktop/SistemaGimnasio/SistemaGimnasio/src/sistemagimnasio/interfaz/FXMLConsultarClienteDatos.fxml</file>
+            <file>file:/C:/Users/Mauricio/Desktop/SistemaGimnasio/SistemaGimnasio/src/sistemagimnasio/SistemaGimnasio.java</file>
+            <file>file:/C:/Users/Mauricio/Desktop/SistemaGimnasio/SistemaGimnasio/src/engine/Database.java</file>
+            <file>file:/C:/Users/Mauricio/Desktop/SistemaGimnasio/SistemaGimnasio/src/sistemagimnasio/Servicio.java</file>
+            <file>file:/C:/Users/Mauricio/Desktop/SistemaGimnasio/SistemaGimnasio/src/sistemagimnasio/MembresiaDAO.java</file>
+            <file>file:/C:/Users/Mauricio/Desktop/SistemaGimnasio/SistemaGimnasio/src/sistemagimnasio/Membresia.java</file>
+            <file>file:/C:/Users/Mauricio/Desktop/SistemaGimnasio/SistemaGimnasio/src/sistemagimnasio/EmpleadoDAO.java</file>
+            <file>file:/C:/Users/Mauricio/Desktop/SistemaGimnasio/SistemaGimnasio/src/engine/SQLRow.java</file>
+            <file>file:/C:/Users/Mauricio/Desktop/SistemaGimnasio/SistemaGimnasio/src/engine/SQLColumn.java</file>
+            <file>file:/C:/Users/Mauricio/Desktop/SistemaGimnasio/SistemaGimnasio/src/sistemagimnasio/Cliente.java</file>
+            <file>file:/C:/Users/Mauricio/Desktop/SistemaGimnasio/SistemaGimnasio/src/sistemagimnasio/controlador/FXMLRegistrarClienteController.java</file>
+            <file>file:/C:/Users/Mauricio/Desktop/SistemaGimnasio/SistemaGimnasio/src/sistemagimnasio/ClienteDAO.java</file>
+            <file>file:/C:/Users/Mauricio/Desktop/SistemaGimnasio/SistemaGimnasio/src/sistemagimnasio/IEmpleadoDAO.java</file>
+            <file>file:/C:/Users/Mauricio/Desktop/SistemaGimnasio/SistemaGimnasio/src/sistemagimnasio/controlador/FXMLConsultarClienteController.java</file>
+            <file>file:/C:/Users/Mauricio/Desktop/SistemaGimnasio/SistemaGimnasio/src/sistemagimnasio/Pago.java</file>
+            <file>file:/C:/Users/Mauricio/Desktop/SistemaGimnasio/SistemaGimnasio/src/sistemagimnasio/interfaz/FXMLActualizarDatos.fxml</file>
+            <file>file:/C:/Users/Mauricio/Desktop/SistemaGimnasio/SistemaGimnasio/src/sistemagimnasio/controlador/FXMLActualizarDatosController.java</file>
+            <file>file:/C:/Users/Mauricio/Desktop/SistemaGimnasio/SistemaGimnasio/src/sistemagimnasio/interfaz/FXMLSistemaGimnasio.fxml</file>
+            <file>file:/C:/Users/Mauricio/Desktop/SistemaGimnasio/SistemaGimnasio/src/sistemagimnasio/IClienteDAO.java</file>
+            <file>file:/C:/Users/Mauricio/Desktop/SistemaGimnasio/SistemaGimnasio/src/engine/SQL.java</file>
+            <file>file:/C:/Users/Mauricio/Desktop/SistemaGimnasio/SistemaGimnasio/src/sistemagimnasio/interfaz/FXMLConsultarCliente.fxml</file>
+            <file>file:/C:/Users/Mauricio/Desktop/SistemaGimnasio/SistemaGimnasio/src/sistemagimnasio/Empleado.java</file>
+            <file>file:/C:/Users/Mauricio/Desktop/SistemaGimnasio/SistemaGimnasio/src/sistemagimnasio/controlador/FXMLRegistrarPagoController.java</file>
+        </group>
     </open-files>
 </project-private>

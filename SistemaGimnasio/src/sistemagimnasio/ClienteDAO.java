@@ -10,9 +10,11 @@
 
 package sistemagimnasio;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
 import engine.SQL;
+import engine.SQLRow;
 
 /**
  * ClienteDAO es la clase que lleva a cabo el control de los clientes en la base
@@ -32,6 +34,38 @@ public class ClienteDAO implements IClienteDAO {
     @Override
     public Cliente getCliente(int id) {
         throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public Cliente getCliente(String nombre, String paterno, String materno) {
+        Cliente cliente = new Cliente();
+        SQL.executeQuery(
+            "SELECT * FROM cliente WHERE nombre = ? AND paterno = ? AND materno = ? LIMIT 1", 
+            new ArrayList<Object>() {
+                {
+                    add(nombre);
+                    add(paterno);
+                    add(materno);
+                }
+            }, (result) -> {
+                for (SQLRow row : result) {
+                    cliente.setId((int) row.getColumnData("idCliente"));
+                    cliente.setIdMembresia((int) row.getColumnData("idMembresia"));
+                    cliente.setNombre(row.getColumnData("nombre").toString());
+                    cliente.setPaterno(row.getColumnData("paterno").toString());
+                    cliente.setMaterno(row.getColumnData("materno").toString());
+                    cliente.setTelefono(row.getColumnData("telefono").toString());
+                    cliente.setFechaNacimiento(
+                        ((Date) row.getColumnData("fechaNacimiento")).toLocalDate()
+                    );
+                    cliente.setDomicilio(row.getColumnData("domicilio").toString());
+                }
+                return true;
+            }, () -> {
+                return false;
+            }
+        );
+        return cliente;
     }
 
     @Override

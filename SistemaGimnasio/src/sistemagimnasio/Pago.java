@@ -9,63 +9,79 @@ import java.time.LocalDate;
 
 /**
  *
- * @author Saarayim
+ * @author Maria Saarayim Gonzalez Hernandez
+ * @author Mauricio Cruz Portilla
  */
 public class Pago {
-  private int id;
-  private String monto;
-  private LocalDate fecha;
-  private int idCliente;
-  private int idMembresia;
-  
-  
-  public Pago (int id, int idCliente, int idMembresia, String monto, LocalDate fecha){
-    this.id=id;
-    this.monto=monto;
-    this.fecha=fecha;
-    this.idCliente=idCliente;
-    this.idMembresia=idMembresia;
-  }
 
-  public int getId() {
-    return id;
-  }
+    private int id;
+    private int monto;
+    private LocalDate fecha;
+    private int idCliente;
+    private int idMembresia;
+    private LocalDate fechaVencimiento;
 
-  public String getMonto() {
-    return monto;
-  }
+    public Pago() {
+    }
 
-  public LocalDate getFecha() {
-    return fecha;
-  }
+    public Pago(
+        int id, int idCliente, int idMembresia, int monto, LocalDate fecha, 
+        LocalDate fechaVencimiento
+    ) {
+        this.id = id;
+        this.monto = monto;
+        this.fecha = fecha;
+        this.idCliente = idCliente;
+        this.idMembresia = idMembresia;
+        this.fechaVencimiento = fechaVencimiento;
+    }
 
-  public void setId(int id) {
-    this.id = id;
-  }
+    public int getId() {
+        return id;
+    }
 
-  public void setMonto(String monto) {
-    this.monto = monto;
-  }
+    public int getMonto() {
+        return monto;
+    }
 
-  public void setFecha(LocalDate fecha) {
-    this.fecha = fecha;
-  }
+    public LocalDate getFecha() {
+        return fecha;
+    }
 
-  public int getIdCliente() {
-    return idCliente;
-  }
+    public void setId(int id) {
+        this.id = id;
+    }
 
-  public int getIdMembresia() {
-    return idMembresia;
-  }
+    public void setMonto(int monto) {
+        this.monto = monto;
+    }
 
-  public void setIdCliente(int idCliente) {
-    this.idCliente = idCliente;
-  }
+    public void setFecha(LocalDate fecha) {
+        this.fecha = fecha;
+    }
 
-  public void setIdMembresia(int idMembresia) {
-    this.idMembresia = idMembresia;
-  }
-  
-  
+    public int getIdCliente() {
+        return idCliente;
+    }
+
+    public int getIdMembresia() {
+        return idMembresia;
+    }
+
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
+    }
+
+    public void setIdMembresia(int idMembresia) {
+        this.idMembresia = idMembresia;
+    }
+
+    public LocalDate getFechaVencimiento() {
+        return fechaVencimiento;
+    }
+
+    public void setFechaVencimiento(LocalDate fechaVencimiento) {
+        this.fechaVencimiento = fechaVencimiento;
+    }
+
 }

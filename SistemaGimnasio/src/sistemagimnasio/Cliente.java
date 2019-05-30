@@ -30,6 +30,12 @@ public class Cliente {
     private String domicilio = null;
 
     /**
+     * Crea una instancia Cliente vacia.
+     */
+    public Cliente() {
+    }
+
+    /**
      * Crea una instancia Cliente sin recurrir a la base de datos.
      * 
      * @param id identificador del cliente
@@ -53,6 +59,29 @@ public class Cliente {
         this.telefono = telefono;
         this.fechaNacimiento = fechaNacimiento;
         this.domicilio = domicilio;
+    }
+
+    public Pago getUltimoPago() {
+        IPagoDAO pagoDAO = new PagoDAO();
+        return pagoDAO.getUltimoPago(this.id);
+    }
+
+    /**
+     * Establece un nuevo identificador al cliente
+     * 
+     * @param id nuevo identificador
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    /**
+     * Establece un nuevo identificador de membresia al cliente
+     * 
+     * @param idmembresia nuevo identificador de membresia
+     */
+    public void setIdMembresia(int idmembresia) {
+        this.idmembresia = idmembresia;
     }
 
     /**

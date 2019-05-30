@@ -80,7 +80,11 @@ public class FXMLRegistrarPagoController implements Initializable {
                     return;
                 }
                 boolean didInsert = pagoDAO.insertPago(
-                    new Pago(0,1,1,textPago.getText(), fechaToInsert)
+                    // Modificar idCliente e idMembresia
+                    new Pago(
+                        0, 1, 1, Integer.parseInt(textPago.getText()), fechaToInsert, 
+                        LocalDate.now().plusMonths(Integer.parseInt(textMensualidadPagar.getText()))
+                    )
                 );
                 if (didInsert) {
                     new Alert(Alert.AlertType.INFORMATION, "Pago registrado exitosamente").show();

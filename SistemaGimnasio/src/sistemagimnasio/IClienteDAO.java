@@ -29,6 +29,16 @@ public interface IClienteDAO {
     public Cliente getCliente(int id);
 
     /**
+     * Retorna un cliente de la base de datos.
+     * 
+     * @param nombre nombre del cliente
+     * @param paterno paterno del cliente
+     * @param materno materno del cliente
+     * @return el cliente
+     */
+    public Cliente getCliente(String nombre, String paterno, String materno);
+
+    /**
      * Inserta un cliente en la base de datos.
      * 
      * @param cliente cliente a insertar

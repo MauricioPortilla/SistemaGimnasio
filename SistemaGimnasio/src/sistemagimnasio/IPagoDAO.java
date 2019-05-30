@@ -11,5 +11,6 @@ package sistemagimnasio;
  */
 public interface IPagoDAO {
   public Pago getPago(int id);
+  public Pago getUltimoPago(int idCliente);
   public boolean insertPago(Pago pago);
 }

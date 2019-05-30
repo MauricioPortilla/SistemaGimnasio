@@ -156,7 +156,7 @@ public class SQL {
             ps.close();
             conn.close();
         } catch (SQLException sqlException) {
-            System.out.println("executeUpdate Error -> " + sqlException.getMessage() + " | Query: " + sql);
+            System.out.println("executeUpdate Error -> " + sqlException.getMessage());
         }
         return status;
     }

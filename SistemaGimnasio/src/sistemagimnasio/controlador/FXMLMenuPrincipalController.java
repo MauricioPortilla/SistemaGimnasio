@@ -26,7 +26,6 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import sistemagimnasio.Cliente;
-import sistemagimnasio.SistemaGimnasio;
 
 /**
  * FXMLMenuPrincipalController es la clase que lleva el control de la interfaz
@@ -52,6 +51,8 @@ public class FXMLMenuPrincipalController {
     
     @FXML private Button registrarPagoButton;
     @FXML private Button registrarServicioButton;
+    @FXML
+    private Button consultarClienteButton;
 
     @FXML
     void initialize() {
@@ -59,6 +60,7 @@ public class FXMLMenuPrincipalController {
         modificarClienteButton.setOnAction(modificarClienteButtonHandler());
         registrarPagoButton.setOnAction(registrarPagoButtonHandler());
         registrarServicioButton.setOnAction(registrarServicioButtonHandler());
+        consultarClienteButton.setOnAction(consultarClienteButtonHandler());
     }
 
     /**
@@ -85,6 +87,33 @@ public class FXMLMenuPrincipalController {
                     ).show();
                     System.out.println(e.getMessage());
                     System.out.println(e.getCause());
+                }
+            }
+        };
+    }
+
+    /**
+     * Lleva a cabo la accion del boton de registrar cliente. Abre la ventana de registro de
+     * cliente.
+     * 
+     * @return el evento del boton
+     */
+    private EventHandler<ActionEvent> consultarClienteButtonHandler() {
+        return new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource(
+                        "/sistemagimnasio/interfaz/FXMLConsultarCliente.fxml"
+                    ));
+                    Stage stage = new Stage();
+                    stage.setScene(new Scene((AnchorPane) loader.load()));
+                    stage.setTitle("Consultar cliente");
+                    stage.show();
+                } catch (IOException e) {
+                    new Alert(
+                        AlertType.ERROR, "Ocurrió un error al abrir la ventana de consultas."
+                    ).show();
                 }
             }
         };
@@ -136,13 +165,6 @@ public class FXMLMenuPrincipalController {
         };
     }
     
-    
-    
-    
-
-    
-    
-    
     /**
      * Lleva a cabo la accion del boton de modificar cliente. Abre la ventana de modificar datos del
      * cliente.
@@ -169,8 +191,6 @@ public class FXMLMenuPrincipalController {
                     new Alert(
                         AlertType.ERROR, "Ocurrió un error al abrir el formulario de registro."
                     ).show();
-                    System.out.println(e.getMessage());
-                    System.out.println(e.getCause());
                 }
             }
         };
