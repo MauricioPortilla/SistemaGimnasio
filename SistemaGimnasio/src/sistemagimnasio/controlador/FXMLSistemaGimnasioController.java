@@ -11,10 +11,8 @@
 package sistemagimnasio.controlador;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import engine.SQL;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

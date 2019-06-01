@@ -1,23 +1,63 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Sistema de Gimnasio
+ * Elaborado por (en orden alfabetico):
+ *  Cruz Portilla Mauricio
+ *  Gonzalez Hernandez Maria Saarayim
+ *  Hernandez Molinos Maria Jose
+ *
+ * Mayo, 2019
  */
+
 package sistemagimnasio;
+
 import engine.SQL;
+import engine.SQLRow;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+
 import java.util.ArrayList;
 
 /**
  *
- * @author Saarayim
+ * @author Maria Saarayim Gonzalez Hernandez
+ * @author Mauricio Cruz Portilla
  */
 public class ServicioDAO implements IServicioDAO {
+
+    public ServicioDAO() {
+    }
+
+    @Override
+    public ObservableList<Servicio> getServicios() {
+        return loadServicios();
+    }
+
+    private ObservableList<Servicio> loadServicios() {
+        ObservableList<Servicio> servicios = FXCollections.observableArrayList();
+        try {
+            SQL.executeQuery("SELECT * FROM servicio;", null, (result) -> {
+                for (SQLRow row : result) {
+                    servicios.add(new Servicio(
+                        (int) row.getColumnData("idServicio"),
+                        row.getColumnData("nombre").toString(),
+                        (int) row.getColumnData("costo"),
+                        row.getColumnData("instructor").toString(),
+                        null
+                    ));
+                }
+                return true;
+            }, () -> {
+                return false;
+            });
+        } catch (Exception e) {
+            new Alert(AlertType.ERROR, "Ocurrió un error al cargar los servicios").show();
+        }
+        return servicios;
+    }
   
-  public ServicioDAO(){
-    
-  }
-  
-  @Override
+    @Override
     public Servicio getServicio(int id) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
@@ -37,11 +77,8 @@ public class ServicioDAO implements IServicioDAO {
             sqlSentence2 += "(NULL, ?, ?, ?, ?)";
             parameters2.add("RETURNED_ID");
             parameters2.add(horario.getDia());
-            System.out.println(horario.getDia());
             parameters2.add(horario.getHoraInicio());
-            System.out.println(horario.getHoraInicio());
             parameters2.add(horario.getHoraFin());
-            System.out.println(horario.getHoraFin());
         }
         if (SQL.executeTransactionUpdate(
             "INSERT INTO servicio VALUES (NULL, ?, ?, ?);", parameters, 

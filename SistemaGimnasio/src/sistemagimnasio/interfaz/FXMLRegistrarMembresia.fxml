@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="393.0" prefWidth="720.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="sistemagimnasio.controlador.FXMLRegistrarMembresiaController">
+  <children>
+    <Label layoutX="14.0" layoutY="64.0" text="Nombre">
+      <font>
+        <Font size="15.0" fx:id="x1" />
+      </font>
+    </Label>
+    <Label layoutX="14.0" layoutY="14.0" text="Registrar Membresía">
+      <font>
+        <Font name="System Bold" size="22.0" />
+      </font>
+    </Label>
+    <TextField fx:id="nombreTextField" layoutX="14.0" layoutY="84.0" prefWidth="215.0" />
+    <Label font="$x1" layoutX="14.0" layoutY="116.0" text="Costo" />
+    <TextField fx:id="costoTextField" layoutX="14.0" layoutY="136.0" prefWidth="215.0" />
+    <Label font="$x1" layoutX="273.0" layoutY="64.0" text="Servicios" />
+    <ListView fx:id="serviciosListView" layoutX="273.0" layoutY="84.0" prefHeight="200.0" prefWidth="200.0" />
+    <Label font="$x1" layoutX="503.0" layoutY="64.0" text="Servicios seleccionados" />
+    <ListView fx:id="serviciosSeleccionadosListView" layoutX="503.0" layoutY="84.0" prefHeight="200.0" prefWidth="200.0" />
+    <Button fx:id="seleccionarButton" layoutX="333.0" layoutY="293.0" mnemonicParsing="false" text="Seleccionar" />
+    <Button fx:id="quitarButton" layoutX="563.0" layoutY="293.0" mnemonicParsing="false" prefWidth="80.0" text="Quitar" />
+    <Button fx:id="registrarButton" layoutX="523.0" layoutY="349.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Registrar" />
+    <Button fx:id="cancelarButton" layoutX="623.0" layoutY="349.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Cancelar" />
+  </children>
+</AnchorPane>

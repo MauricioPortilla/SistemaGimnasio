@@ -10,8 +10,8 @@
 
 package sistemagimnasio.controlador;
 
+import java.io.IOException;
 import java.net.URL;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -22,12 +22,15 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.converter.DateTimeStringConverter;
 import javafx.util.converter.IntegerStringConverter;
@@ -105,7 +108,9 @@ public class FXMLActualizarDatosController {
         this.cliente = cliente;
         nombreTextField.setText(cliente.getNombre());
         apellidoPaternoTextField.setText(cliente.getPaterno());
-        apellidoMaternoTextField.setText(cliente.getMaterno());
+        apellidoMaternoTextField.setText(
+            (cliente.getMaterno() == "N/A") ? "" : cliente.getMaterno()
+        );
         telefonoTextField.setText(cliente.getTelefono());
         fechaNacimientoTextField.setText(
             cliente.getFechaNacimiento().format(DateTimeFormatter.ofPattern("dd/MM/uuuu"))
@@ -150,7 +155,9 @@ public class FXMLActualizarDatosController {
                 cliente.setFechaNacimiento(fechaNacimientoNueva);
                 cliente.setDomicilio(domicilioTextField.getText());
                 if (clienteDAO.updateCliente(cliente)) {
-                    new Alert(AlertType.INFORMATION, "Se ha actualizado correctamente").show();
+                    new Alert(
+                        AlertType.INFORMATION, "Se ha actualizado correctamente"
+                    ).showAndWait();
                     cancelarButton.fire();
                     return;
                 }
@@ -171,8 +178,28 @@ public class FXMLActualizarDatosController {
             @Override
             public void handle(ActionEvent event) {
                 ((Stage) cancelarButton.getScene().getWindow()).close();
+                showConsultarClienteDatos();
             }
         };
+    }
+
+    private void showConsultarClienteDatos() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(
+                "/sistemagimnasio/interfaz/FXMLConsultarClienteDatos.fxml"
+            ));
+            Stage stage = new Stage();
+            stage.setScene(new Scene((AnchorPane) loader.load()));
+            stage.setTitle("Consultar cliente - Gimnasio");
+            FXMLConsultarClienteDatosController controller = loader.
+                <FXMLConsultarClienteDatosController>getController();
+            controller.initData(cliente);
+            stage.show();
+        } catch (IOException e) {
+            new Alert(
+                AlertType.ERROR, "Ocurrió un error al abrir los datos de la consulta."
+            ).show();
+        }
     }
 
 }

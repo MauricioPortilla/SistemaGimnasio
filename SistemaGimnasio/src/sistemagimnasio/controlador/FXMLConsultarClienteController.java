@@ -1,3 +1,13 @@
+/**
+ * Sistema de Gimnasio
+ * Elaborado por (en orden alfabetico):
+ *  Cruz Portilla Mauricio
+ *  Gonzalez Hernandez Maria Saarayim
+ *  Hernandez Molinos Maria Jose
+ *
+ * Mayo, 2019
+ */
+
 package sistemagimnasio.controlador;
 
 import java.io.IOException;
@@ -42,7 +52,8 @@ public class FXMLConsultarClienteController {
         consultarButton.setOnAction(consultarButtonHandler());
     }
 
-    private final int NAME_LENGTH_FOR_ONE_NAME = 3; // Mauricio Cruz Portilla
+    private final int NAME_LENGTH_FOR_FULLNAME = 3; // Mauricio Cruz Portilla
+    private final int NAME_LENGTH_FOR_PARTIAL_FULLNAME = 2; // Mauricio Cruz
     private EventHandler<ActionEvent> consultarButtonHandler() {
         return new EventHandler<ActionEvent>() {
             @Override
@@ -52,15 +63,19 @@ public class FXMLConsultarClienteController {
                     return;
                 }
                 String[] nombreClienteSplit = nombreClienteTextField.getText().split(" ");
-                if (nombreClienteSplit.length < NAME_LENGTH_FOR_ONE_NAME) { // Mauricio Cruz
+                if (nombreClienteSplit.length < NAME_LENGTH_FOR_PARTIAL_FULLNAME) {
+                    new Alert(AlertType.WARNING, "Debes ingresar un nombre completo").show();
+                    return;
+                }
+                if (nombreClienteSplit.length == NAME_LENGTH_FOR_PARTIAL_FULLNAME) {
                     cliente = clienteDAO.getCliente(
                         nombreClienteSplit[0], nombreClienteSplit[1], null
                     );
-                } else if (nombreClienteSplit.length == NAME_LENGTH_FOR_ONE_NAME) {
+                } else if (nombreClienteSplit.length == NAME_LENGTH_FOR_FULLNAME) {
                     cliente = clienteDAO.getCliente(
                         nombreClienteSplit[0], nombreClienteSplit[1], nombreClienteSplit[2]
                     );
-                } else if (nombreClienteSplit.length > NAME_LENGTH_FOR_ONE_NAME) {
+                } else if (nombreClienteSplit.length > NAME_LENGTH_FOR_FULLNAME) {
                     String nombre = "";
                     for (int i = 0; i < nombreClienteSplit.length - 2; i++) {
                         nombre += nombreClienteSplit[i];
@@ -78,7 +93,7 @@ public class FXMLConsultarClienteController {
                         ));
                         Stage stage = new Stage();
                         stage.setScene(new Scene((AnchorPane) loader.load()));
-                        stage.setTitle("Modificar datos del cliente - Gimnasio");
+                        stage.setTitle("Consultar cliente - Gimnasio");
                         FXMLConsultarClienteDatosController controller = loader.
                             <FXMLConsultarClienteDatosController>getController();
                         controller.initData(cliente);

@@ -1,26 +1,32 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Sistema de Gimnasio
+ * Elaborado por (en orden alfabetico):
+ *  Cruz Portilla Mauricio
+ *  Gonzalez Hernandez Maria Saarayim
+ *  Hernandez Molinos Maria Jose
+ *
+ * Mayo, 2019
  */
+
 package sistemagimnasio;
 
 import java.util.ArrayList;
 
 /**
  *
- * @author Saarayim
+ * @author Maria Saarayim Gonzalez Hernandez
+ * @author Mauricio Cruz Portilla
  */
 public class Servicio {
 
     private int id;
     private String nombre;
-    private String costo;
+    private int costo;
     private String instructor;
     private ArrayList<HorarioServicio> horarios;
 
     public Servicio(
-        int id, String nombre, String costo, String instructor, ArrayList<HorarioServicio> horarios
+        int id, String nombre, int costo, String instructor, ArrayList<HorarioServicio> horarios
     ) {
         this.id = id;
         this.nombre = nombre;
@@ -37,7 +43,7 @@ public class Servicio {
         return nombre;
     }
 
-    public String getCosto() {
+    public int getCosto() {
         return costo;
     }
 
@@ -57,12 +63,17 @@ public class Servicio {
         this.nombre = nombre;
     }
 
-    public void setCosto(String costo) {
+    public void setCosto(int costo) {
         this.costo = costo;
     }
 
     public void setInstructor(String instructor) {
         this.instructor = instructor;
+    }
+
+    @Override
+    public String toString() {
+        return nombre + " ($" + costo + ".00)";
     }
 
 }

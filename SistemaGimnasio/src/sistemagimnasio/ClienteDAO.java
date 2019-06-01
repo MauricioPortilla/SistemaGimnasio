@@ -15,6 +15,8 @@ import java.util.ArrayList;
 
 import engine.SQL;
 import engine.SQLRow;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 /**
  * ClienteDAO es la clase que lleva a cabo el control de los clientes en la base
@@ -39,13 +41,20 @@ public class ClienteDAO implements IClienteDAO {
     @Override
     public Cliente getCliente(String nombre, String paterno, String materno) {
         Cliente cliente = new Cliente();
-        SQL.executeQuery(
-            "SELECT * FROM cliente WHERE nombre = ? AND paterno = ? AND materno = ? LIMIT 1", 
-            new ArrayList<Object>() {
+        String query = 
+            "SELECT * FROM cliente WHERE nombre = ? AND paterno = ? AND materno = ? LIMIT 1";
+        if (materno == null) {
+            query = "SELECT * FROM cliente WHERE nombre = ? AND paterno = ? AND materno IS NULL " +
+                "LIMIT 1";
+        }
+        try {
+			SQL.executeQuery(query, new ArrayList<Object>() {
                 {
                     add(nombre);
                     add(paterno);
-                    add(materno);
+                    if (materno != null) {
+                        add(materno);
+                    }
                 }
             }, (result) -> {
                 for (SQLRow row : result) {
@@ -53,7 +62,9 @@ public class ClienteDAO implements IClienteDAO {
                     cliente.setIdMembresia((int) row.getColumnData("idMembresia"));
                     cliente.setNombre(row.getColumnData("nombre").toString());
                     cliente.setPaterno(row.getColumnData("paterno").toString());
-                    cliente.setMaterno(row.getColumnData("materno").toString());
+                    if (materno != null) {
+                        cliente.setMaterno(row.getColumnData("materno").toString());
+                    }
                     cliente.setTelefono(row.getColumnData("telefono").toString());
                     cliente.setFechaNacimiento(
                         ((Date) row.getColumnData("fechaNacimiento")).toLocalDate()
@@ -63,8 +74,10 @@ public class ClienteDAO implements IClienteDAO {
                 return true;
             }, () -> {
                 return false;
-            }
-        );
+            });
+		} catch (Exception e) {
+			new Alert(AlertType.ERROR, "Ocurrió un error al momento de obtener los datos").show();
+		}
         return cliente;
     }
 
@@ -77,7 +90,7 @@ public class ClienteDAO implements IClienteDAO {
                     add(cliente.getIdMembresia());
                     add(cliente.getNombre());
                     add(cliente.getPaterno());
-                    add(cliente.getMaterno());
+                    add((cliente.getMaterno() == "N/A") ? null : cliente.getMaterno());
                     add(cliente.getTelefono());
                     add(cliente.getFechaNacimiento());
                     add(cliente.getDomicilio());
@@ -91,21 +104,26 @@ public class ClienteDAO implements IClienteDAO {
 
     @Override
     public boolean updateCliente(Cliente cliente) {
-        if (SQL.executeUpdate(
+        String query = 
             "UPDATE cliente SET nombre = ?, paterno = ?, materno = ?, telefono = ?, " + 
-            "fechaNacimiento = ?, domicilio = ? WHERE idCliente = ?",
-            new ArrayList<Object>() {
-                {
-                    add(cliente.getNombre());
-                    add(cliente.getPaterno());
+            "fechaNacimiento = ?, domicilio = ? WHERE idCliente = ?";
+        if (cliente.getMaterno() == "N/A") {
+            query = "UPDATE cliente SET nombre = ?, paterno = ?, materno = NULL, telefono = ?, " + 
+            "fechaNacimiento = ?, domicilio = ? WHERE idCliente = ?";
+        }
+        if (SQL.executeUpdate(query, new ArrayList<Object>() {
+            {
+                add(cliente.getNombre());
+                add(cliente.getPaterno());
+                if (cliente.getMaterno() != "N/A") {
                     add(cliente.getMaterno());
-                    add(cliente.getTelefono());
-                    add(cliente.getFechaNacimiento());
-                    add(cliente.getDomicilio());
-                    add(cliente.getId());
                 }
+                add(cliente.getTelefono());
+                add(cliente.getFechaNacimiento());
+                add(cliente.getDomicilio());
+                add(cliente.getId());
             }
-        ) == 1) { // 1 indica que hay 1 fila afectada
+        }) == 1) { // 1 indica que hay 1 fila afectada
             return true;
         }
         return false;

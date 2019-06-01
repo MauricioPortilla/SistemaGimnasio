@@ -1,16 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Sistema de Gimnasio
+ * Elaborado por (en orden alfabetico):
+ *  Cruz Portilla Mauricio
+ *  Gonzalez Hernandez Maria Saarayim
+ *  Hernandez Molinos Maria Jose
+ *
+ * Mayo, 2019
  */
+
 package sistemagimnasio.controlador;
 
 import java.net.URL;
-import java.sql.SQLException;
-import java.time.LocalDate;
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -23,12 +24,8 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
-import sistemagimnasio.Cliente;
-import sistemagimnasio.ClienteDAO;
 import sistemagimnasio.HorarioServicio;
-import sistemagimnasio.IClienteDAO;
 import sistemagimnasio.IServicioDAO;
-import sistemagimnasio.Membresia;
 import sistemagimnasio.Servicio;
 import sistemagimnasio.ServicioDAO;
 
@@ -124,8 +121,11 @@ public class FXMLRegistrarServicioController implements Initializable {
                 }
                 boolean didInsert = servicioDAO.insertServicio(
                     new Servicio(
-                        0, textNombre.getText(), textCosto.getText(), 
-                        textInstructor.getText(), horarios
+                        0, 
+                        textNombre.getText(), 
+                        Integer.parseInt(textCosto.getText()), 
+                        textInstructor.getText(), 
+                        horarios
                     )
                 );
                 if (didInsert) {

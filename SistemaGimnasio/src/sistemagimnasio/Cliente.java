@@ -61,6 +61,11 @@ public class Cliente {
         this.domicilio = domicilio;
     }
 
+    /**
+     * Retorna el ultimo pago realizado.
+     * 
+     * @return ultimo pago realizado
+     */
     public Pago getUltimoPago() {
         IPagoDAO pagoDAO = new PagoDAO();
         return pagoDAO.getUltimoPago(this.id);
@@ -175,12 +180,17 @@ public class Cliente {
     }
 
     /**
-     * Regresa el apellido materno del cliente.
+     * Regresa el apellido materno del cliente. Si es <code>null</code>, retornará <code>N/A</code>.
      * 
      * @return el apellido materno del cliente
      */
     public String getMaterno() {
-        return materno;
+        if (materno != null) {
+            if (!materno.isEmpty()) {
+                return materno;
+            }
+        }
+        return "N/A";
     }
 
     /**

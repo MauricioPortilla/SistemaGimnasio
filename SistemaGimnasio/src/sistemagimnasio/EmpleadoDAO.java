@@ -11,6 +11,9 @@
 package sistemagimnasio;
 
 import engine.SQL;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+
 import java.util.ArrayList;
 
 /**
@@ -32,25 +35,29 @@ public class EmpleadoDAO implements IEmpleadoDAO {
     @Override
     public Empleado getEmpleado(String usuario, String contrasenia) {
         final Empleado empleado = new Empleado();
-        SQL.executeQuery(
-            "SELECT * FROM empleado WHERE usuario = ? AND contrasenia = ?", 
-            new ArrayList<Object>(){
-                {
-                    add(usuario);
-                    add(contrasenia);
-                }
-            }, (result) -> {
-                empleado.setId((int) result.get(0).getColumnData("idEmpleado"));
-                empleado.setNombre(result.get(0).getColumnData("nombre").toString());
-                empleado.setPaterno(result.get(0).getColumnData("paterno").toString());
-                empleado.setMaterno(result.get(0).getColumnData("materno").toString());
-                empleado.setUsuario(result.get(0).getColumnData("usuario").toString());
-                empleado.setContrasenia(result.get(0).getColumnData("contrasenia").toString());
-                return true;
-            }, () -> {
-                return false;
-            }
-        );
+        try {
+			SQL.executeQuery(
+			    "SELECT * FROM empleado WHERE usuario = ? AND contrasenia = ?", 
+			    new ArrayList<Object>(){
+			        {
+			            add(usuario);
+			            add(contrasenia);
+			        }
+			    }, (result) -> {
+			        empleado.setId((int) result.get(0).getColumnData("idEmpleado"));
+			        empleado.setNombre(result.get(0).getColumnData("nombre").toString());
+			        empleado.setPaterno(result.get(0).getColumnData("paterno").toString());
+			        empleado.setMaterno(result.get(0).getColumnData("materno").toString());
+			        empleado.setUsuario(result.get(0).getColumnData("usuario").toString());
+			        empleado.setContrasenia(result.get(0).getColumnData("contrasenia").toString());
+			        return true;
+			    }, () -> {
+			        return false;
+			    }
+			);
+		} catch (Exception e) {
+			new Alert(AlertType.ERROR, "Ocurrió un error al momento de obtener los datos").show();
+		}
         return empleado;
     }
 

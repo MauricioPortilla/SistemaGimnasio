@@ -10,6 +10,8 @@
 
 package sistemagimnasio;
 
+import java.util.ArrayList;
+
 /**
  * Membresia es la clase que lleva la informacion de una membresia de la base de datos.
  * 
@@ -21,6 +23,7 @@ public class Membresia {
     private int id;
     private String nombre;
     private int costo;
+    private ArrayList<Servicio> servicios;
 
     /**
      * Crea una instancia de Membresia vacia.
@@ -34,11 +37,13 @@ public class Membresia {
      * @param id identificador de la membresia
      * @param nombre nombre de la membresia
      * @param costo costo de la membresia
+     * @param servicios servicios de la membresia
      */
-    public Membresia(int id, String nombre, int costo) {
+    public Membresia(int id, String nombre, int costo, ArrayList<Servicio> servicios) {
         this.id = id;
         this.nombre = nombre;
         this.costo = costo;
+        this.servicios = servicios;
     }
 
     /**
@@ -93,6 +98,10 @@ public class Membresia {
      */
     public int getCosto() {
         return costo;
+    }
+
+    public ArrayList<Servicio> getServicios() {
+        return servicios;
     }
 
     @Override

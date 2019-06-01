@@ -13,6 +13,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+
 /**
  * Database es la clase que lleva a cabo la conexion a la
  * base de datos.
@@ -26,8 +29,10 @@ public class Database {
 
     /**
      * Crea la conexion a la base de datos
+     * 
+     * @throws SQLException
      */
-    public Database() {
+    public Database() throws SQLException {
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             System.out.println("Connecting...");
@@ -36,6 +41,9 @@ public class Database {
             System.out.println("Connected.");
         } catch(SQLException sqlException){
             System.out.println("Connection error -> " + sqlException.getMessage());
+            new Alert(
+                AlertType.ERROR, "No fue posible realizar la conexión a la base de datos."
+            ).show();
         } catch(ClassNotFoundException classException){
             classException.printStackTrace();
         } catch(Exception e){

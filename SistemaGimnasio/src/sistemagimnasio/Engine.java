@@ -10,6 +10,9 @@
 
 package sistemagimnasio;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.scene.control.TextField;
 import javafx.stage.Window;
 
 /**
@@ -23,4 +26,30 @@ import javafx.stage.Window;
 public class Engine {
     public static Empleado empleadoSesion;
     public static Window iniciarSesionWindow;
+
+    public static ChangeListener<String> onlyNumbersRegexListener(TextField textField) {
+        return new ChangeListener<String>() {
+            @Override
+            public void changed(
+                ObservableValue<? extends String> observable, String oldValue, String newValue
+            ) {
+                if (!newValue.matches("\\d*")) {
+                    textField.setText(newValue.replaceAll("[^\\d]", ""));
+                }
+            }
+        };
+    }
+
+    public static ChangeListener<String> onlyDateFormatRegexListener(TextField textField) {
+        return new ChangeListener<String>() {
+            @Override
+            public void changed(
+                ObservableValue<? extends String> observable, String oldValue, String newValue
+            ) {
+                if (!newValue.matches("(\\d*\\/\\d*)")) {
+                    textField.setText(newValue.replaceAll("[^(\\d*\\/\\d*)]", ""));
+                }
+            }
+        };
+    }
 }

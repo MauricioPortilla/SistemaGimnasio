@@ -1,7 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Sistema de Gimnasio
+ * Elaborado por (en orden alfabetico):
+ *  Cruz Portilla Mauricio
+ *  Gonzalez Hernandez Maria Saarayim
+ *  Hernandez Molinos Maria Jose
+ *
+ * Mayo, 2019
  */
 package sistemagimnasio;
 
@@ -10,6 +14,8 @@ package sistemagimnasio;
  * @author Saarayim
  */
 public interface IHorarioServicioDAO {
-  public HorarioServicio getHorarioServicio(int id);
-  public boolean insertHorarioServicio(HorarioServicio horarioServicio);
+
+    public HorarioServicio getHorarioServicio(int id);
+
+    public boolean insertHorarioServicio(HorarioServicio horarioServicio);
 }

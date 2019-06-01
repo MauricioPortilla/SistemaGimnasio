@@ -10,6 +10,7 @@
 
 package engine;
 import java.sql.Statement;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.function.BooleanSupplier;
 import java.util.function.Predicate;
@@ -31,9 +32,7 @@ public class SQL {
     public static Statement statement;
 
     /**
-     * Realiza una consulta a la base de datos
-     * y retorna una lista con cada resultado
-     * encontrado.
+     * Realiza una consulta a la base de datos y retorna una lista con cada resultado encontrado.
      * 
      * @param sql consulta SQL
      * @param result funcion con parametro que posee
@@ -63,9 +62,8 @@ public class SQL {
     }
 
     /**
-     * Realiza una consulta a la base de datos
-     * y retorna una lista con cada resultado
-     * encontrado.
+     * Realiza una consulta a la base de datos y retorna una lista con cada resultado encontrado.
+     * 
      * @param sql consulta SQL
      * @param parameters lista de valores que va a tomar la consulta
      * @param result funcion con parametro que posee los resultados de la consulta y se ejecuta si
@@ -76,13 +74,17 @@ public class SQL {
     public static boolean executeQuery(
         String sql, ArrayList<Object> parameters, Predicate<ArrayList<SQLRow>> result, 
         BooleanSupplier failure
-    ) {
+    ) throws Exception {
         try {
             Connection conn = new Database().getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
 			if (parameters != null) {
 				for (int i = 0; i < parameters.size(); i++) {
-				   ps.setObject(i + 1, parameters.get(i));
+                    if (parameters.get(i) == null) {
+                        ps.setNull(i + 1, Types.VARCHAR);
+                        continue;
+                    }
+                    ps.setObject(i + 1, parameters.get(i));
 				}
 			}
             ResultSet rs = ps.executeQuery();
@@ -102,18 +104,20 @@ public class SQL {
             return queryStatus;
         } catch (SQLException sqlException) {
             System.out.println("executeQuery Error -> " + sqlException.getMessage());
-            return false;
+            throw new SQLException("executeQuery Error -> " + sqlException.getMessage());
+        } catch (Exception exception) {
+            System.out.println("Exception -> " + exception.getMessage());
+            throw new Exception("Exception -> " + exception.getMessage());
         }
     }
 
     /**
-     * Realiza una actualizacion en la base
-     * de datos y retorna el numero de filas
-     * afectadas si no se indica que se retorne
-     * el id de la fila afectada.
+     * Realiza una actualizacion en la base de datos y retorna el numero de filas
+     * afectadas si no se indica que se retorne el id de la fila afectada.
+     * 
      * @param sql consulta SQL
      * @param returnId si deberia retornar el id de la fila afectada
-     * @return el numero de filas afectadas
+     * @return el numero de filas afectadas, o el id de la fila afectada
      */
     public static int executeUpdate(String sql, boolean returnId) {
         int status = -1;
@@ -137,9 +141,9 @@ public class SQL {
     }
 
     /**
-     * Realiza una actualizacion en la base
-     * de datos de acuerdo a los parametros
-     * ingresados
+     * Realiza una actualizacion en la base de datos de acuerdo a los parametros
+     * ingresados.
+     * 
      * @param sql consulta SQL
      * @param parameters valores a usar en la consulta
      * @return el numero de filas afectadas
@@ -150,6 +154,10 @@ public class SQL {
             Connection conn = new Database().getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
             for (int i = 0; i < parameters.size(); i++) {
+                if (parameters.get(i) == null) {
+                    ps.setNull(i + 1, Types.VARCHAR);
+                    continue;
+                }
                 ps.setObject(i + 1, parameters.get(i));
             }
             status = ps.executeUpdate();
@@ -161,9 +169,22 @@ public class SQL {
         return status;
     }
 
+    /**
+     * Realiza una actualizacion en la base de datos en forma de transaccion, ejecutando primero
+     * <i>sql</i> con sus <i>parameters</i>; si tuvo exito, va a ejecutar <i>sqlAfterFirst</i> con
+     * sus <i>parametersAfterFirst</i> y concluye la transaccion; si no, deshará los cambios hechos.
+     * 
+     * @param sql primer sentencia a ejecutar
+     * @param parameters parametros de la primera sentencia
+     * @param sqlAfterFirst segunda sentencia a ejecutar
+     * @param parametersAfterFirst parametros de la segunda sentencia (puede incluir como valor
+     * <code>"RETURNED_ID"</code> para referirse al ID de la fila afectada en la sentencia SQL 
+     * anterior)
+     * @return el numero de filas afectadas, o -1 si no tuvo exito
+     */
     public static int executeTransactionUpdate(
         String sql, ArrayList<Object> parameters, 
-        String sqlAfterFirst, ArrayList<Object> parameters2
+        String sqlAfterFirst, ArrayList<Object> parametersAfterFirst
     ) {
         int status = -1;
         Connection conn = null;
@@ -174,6 +195,10 @@ public class SQL {
             conn.setAutoCommit(false);
             ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             for (int i = 0; i < parameters.size(); i++) {
+                if (parameters.get(i) == null) {
+                    ps.setNull(i + 1, Types.VARCHAR);
+                    continue;
+                }
                 ps.setObject(i + 1, parameters.get(i));
             }
             status = ps.executeUpdate();
@@ -184,20 +209,22 @@ public class SQL {
             }
             if (status == 1) {
                 ps2 = conn.prepareStatement(sqlAfterFirst, Statement.RETURN_GENERATED_KEYS);
-                for (int i = 0; i < parameters2.size(); i++) {
-                    if (parameters2.get(i).toString().equals("RETURNED_ID")) {
+                for (int i = 0; i < parametersAfterFirst.size(); i++) {
+                    if (parametersAfterFirst.get(i).toString().equals("RETURNED_ID")) {
                         ps2.setObject(i + 1, idReturned);
                     } else {
-                        ps2.setObject(i + 1, parameters2.get(i));
+                        ps2.setObject(i + 1, parametersAfterFirst.get(i));
                     }
                 }
                 ps2.executeUpdate();
                 conn.commit();
             } else {
+                System.out.println("Rolling back because of error on first query.");
                 status = -1;
                 conn.rollback();
             }
         } catch (SQLException e) {
+            System.out.println("SQLException 1 -> " + e.getMessage());
             if (conn != null) {
                 try {
                     status = -1;
@@ -218,15 +245,15 @@ public class SQL {
                     conn.close();
                 }
             } catch (SQLException e) {
-                System.out.println(e.getMessage());
+                System.out.println("SQLException on finally -> " + e.getMessage());
             }
         }
         return status;
     }
 
     /**
-     * Convierte un ResultSet en una lista con los datos
-     * de cada fila.
+     * Convierte un ResultSet en una lista con los datos de cada fila.
+     * 
      * @param rs resultado de la consulta
      * @return la lista con cada fila
      */

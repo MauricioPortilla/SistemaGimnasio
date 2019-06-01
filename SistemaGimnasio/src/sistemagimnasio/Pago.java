@@ -1,8 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Sistema de Gimnasio
+ * Elaborado por (en orden alfabetico):
+ *  Cruz Portilla Mauricio
+ *  Gonzalez Hernandez Maria Saarayim
+ *  Hernandez Molinos Maria Jose
+ *
+ * Mayo, 2019
  */
+
 package sistemagimnasio;
 
 import java.time.LocalDate;
@@ -34,6 +39,16 @@ public class Pago {
         this.idCliente = idCliente;
         this.idMembresia = idMembresia;
         this.fechaVencimiento = fechaVencimiento;
+    }
+
+    /**
+     * Verifica si el objeto tiene datos cargados.
+     * 
+     * @return <code>true</code> si el identificador es mayor a cero; de lo
+     *         contrario, retornará <code>false</code>
+     */
+    public boolean isLoaded() {
+        return (id > 0);
     }
 
     public int getId() {

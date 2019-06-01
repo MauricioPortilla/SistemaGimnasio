@@ -29,6 +29,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import sistemagimnasio.Cliente;
 import sistemagimnasio.ClienteDAO;
+import sistemagimnasio.Engine;
 import sistemagimnasio.IClienteDAO;
 import sistemagimnasio.IMembresiaDAO;
 import sistemagimnasio.Membresia;
@@ -89,14 +90,12 @@ public class FXMLRegistrarClienteController {
         cargarMembresias();
         registrarButton.setOnAction(registrarButtonHandler());
         cancelarButton.setOnAction(cancelarButtonHandler());
-        telefonoTextField.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                if (!newValue.matches("\\d*")) {
-                    telefonoTextField.setText(newValue.replaceAll("[^\\d]", ""));
-                }
-            }
-        });
+        telefonoTextField.textProperty().addListener(
+            Engine.onlyNumbersRegexListener(telefonoTextField)
+        );
+        fechaNacimientoTextField.textProperty().addListener(
+            Engine.onlyDateFormatRegexListener(fechaNacimientoTextField)
+        );
     }
 
     /**

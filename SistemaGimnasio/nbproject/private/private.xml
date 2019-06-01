@@ -7,7 +7,9 @@
             <file>file:/C:/Users/Mauricio/Desktop/SistemaGimnasio/SistemaGimnasio/src/sistemagimnasio/controlador/FXMLConsultarClienteDatosController.java</file>
             <file>file:/C:/Users/Mauricio/Desktop/SistemaGimnasio/SistemaGimnasio/src/sistemagimnasio/Engine.java</file>
             <file>file:/C:/Users/Mauricio/Desktop/SistemaGimnasio/SistemaGimnasio/src/sistemagimnasio/IMembresiaDAO.java</file>
+            <file>file:/C:/Users/Mauricio/Desktop/SistemaGimnasio/SistemaGimnasio/src/sistemagimnasio/IServicioDAO.java</file>
             <file>file:/C:/Users/Mauricio/Desktop/SistemaGimnasio/SistemaGimnasio/src/sistemagimnasio/HorarioServicioDAO.java</file>
+            <file>file:/C:/Users/Mauricio/Desktop/SistemaGimnasio/SistemaGimnasio/src/sistemagimnasio/controlador/FXMLRegistrarMembresiaController.java</file>
             <file>file:/C:/Users/Mauricio/Desktop/SistemaGimnasio/SistemaGimnasio/src/sistemagimnasio/controlador/FXMLMenuPrincipalController.java</file>
             <file>file:/C:/Users/Mauricio/Desktop/SistemaGimnasio/SistemaGimnasio/src/sistemagimnasio/PagoDAO.java</file>
             <file>file:/C:/Users/Mauricio/Desktop/SistemaGimnasio/SistemaGimnasio/src/sistemagimnasio/controlador/FXMLRegistrarServicioController.java</file>
@@ -18,12 +20,14 @@
             <file>file:/C:/Users/Mauricio/Desktop/SistemaGimnasio/SistemaGimnasio/src/sistemagimnasio/interfaz/FXMLMenuPrincipal.fxml</file>
             <file>file:/C:/Users/Mauricio/Desktop/SistemaGimnasio/SistemaGimnasio/src/sistemagimnasio/interfaz/FXMLConsultarClienteDatos.fxml</file>
             <file>file:/C:/Users/Mauricio/Desktop/SistemaGimnasio/SistemaGimnasio/src/sistemagimnasio/SistemaGimnasio.java</file>
+            <file>file:/C:/Users/Mauricio/Desktop/SistemaGimnasio/SistemaGimnasio/src/sistemagimnasio/interfaz/FXMLRegistrarMembresia.fxml</file>
             <file>file:/C:/Users/Mauricio/Desktop/SistemaGimnasio/SistemaGimnasio/src/engine/Database.java</file>
             <file>file:/C:/Users/Mauricio/Desktop/SistemaGimnasio/SistemaGimnasio/src/sistemagimnasio/Servicio.java</file>
             <file>file:/C:/Users/Mauricio/Desktop/SistemaGimnasio/SistemaGimnasio/src/sistemagimnasio/MembresiaDAO.java</file>
             <file>file:/C:/Users/Mauricio/Desktop/SistemaGimnasio/SistemaGimnasio/src/sistemagimnasio/Membresia.java</file>
             <file>file:/C:/Users/Mauricio/Desktop/SistemaGimnasio/SistemaGimnasio/src/sistemagimnasio/EmpleadoDAO.java</file>
             <file>file:/C:/Users/Mauricio/Desktop/SistemaGimnasio/SistemaGimnasio/src/engine/SQLRow.java</file>
+            <file>file:/C:/Users/Mauricio/Desktop/SistemaGimnasio/SistemaGimnasio/src/sistemagimnasio/IHorarioServicioDAO.java</file>
             <file>file:/C:/Users/Mauricio/Desktop/SistemaGimnasio/SistemaGimnasio/src/engine/SQLColumn.java</file>
             <file>file:/C:/Users/Mauricio/Desktop/SistemaGimnasio/SistemaGimnasio/src/sistemagimnasio/Cliente.java</file>
             <file>file:/C:/Users/Mauricio/Desktop/SistemaGimnasio/SistemaGimnasio/src/sistemagimnasio/controlador/FXMLRegistrarClienteController.java</file>
@@ -39,6 +43,7 @@
             <file>file:/C:/Users/Mauricio/Desktop/SistemaGimnasio/SistemaGimnasio/src/sistemagimnasio/interfaz/FXMLConsultarCliente.fxml</file>
             <file>file:/C:/Users/Mauricio/Desktop/SistemaGimnasio/SistemaGimnasio/src/sistemagimnasio/Empleado.java</file>
             <file>file:/C:/Users/Mauricio/Desktop/SistemaGimnasio/SistemaGimnasio/src/sistemagimnasio/controlador/FXMLRegistrarPagoController.java</file>
+            <file>file:/C:/Users/Mauricio/Desktop/SistemaGimnasio/SistemaGimnasio/src/sistemagimnasio/IPagoDAO.java</file>
         </group>
     </open-files>
 </project-private>
