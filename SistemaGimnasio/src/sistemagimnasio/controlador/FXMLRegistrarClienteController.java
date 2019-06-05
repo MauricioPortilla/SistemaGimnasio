@@ -15,8 +15,6 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ResourceBundle;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -105,6 +103,12 @@ public class FXMLRegistrarClienteController {
         membresiaComboBox.setItems(membresiaDAO.getMembresias());
     }
 
+    /**
+     * Lleva a cabo la acción del botón Registrar. Verifica si los campos están
+     * completos y válidos, y realiza la inserción del cliente en la base de datos.
+     * 
+     * @return el evento del botón
+     */
     private EventHandler<ActionEvent> registrarButtonHandler() {
         return new EventHandler<ActionEvent>() {
             @Override

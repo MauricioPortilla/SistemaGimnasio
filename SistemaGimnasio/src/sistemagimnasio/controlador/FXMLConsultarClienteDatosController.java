@@ -33,6 +33,15 @@ import sistemagimnasio.Membresia;
 import sistemagimnasio.MembresiaDAO;
 import sistemagimnasio.Pago;
 
+/**
+ * FXMLConsultarClienteDatosController es la clase que lleva el control de la
+ * interfaz FXMLConsultarClienteDatos y se encarga de mostrar los datos de un
+ * cliente.
+ * 
+ * @author Mauricio Cruz Portilla
+ * @version 1.0
+ * @since 2019/05/29
+ */
 public class FXMLConsultarClienteDatosController {
 
     @FXML
@@ -127,7 +136,6 @@ public class FXMLConsultarClienteDatosController {
                     FXMLActualizarDatosController controller = loader.
                         <FXMLActualizarDatosController>getController();
                     controller.initData(cliente);
-                    stage.setOnHidden(reloadWindow());
                     stage.show();
                     ((Stage) modificarButton.getScene().getWindow()).close();
                 } catch (IOException e) {
@@ -135,15 +143,6 @@ public class FXMLConsultarClienteDatosController {
                         AlertType.ERROR, "Ocurrió un error al abrir el formulario de registro."
                     ).show();
                 }
-            }
-        };
-    }
-
-    private EventHandler<WindowEvent> reloadWindow() {
-        return new EventHandler<WindowEvent>() {
-            @Override
-            public void handle(WindowEvent event) {
-
             }
         };
     }

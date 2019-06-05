@@ -27,13 +27,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TextFormatter;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javafx.util.converter.DateTimeStringConverter;
-import javafx.util.converter.IntegerStringConverter;
 import sistemagimnasio.Cliente;
 import sistemagimnasio.ClienteDAO;
 import sistemagimnasio.IClienteDAO;
@@ -83,7 +79,6 @@ public class FXMLActualizarDatosController {
     private Cliente cliente;
 
     private IClienteDAO clienteDAO = new ClienteDAO();
-
 
     @FXML
     void initialize() {
@@ -183,6 +178,10 @@ public class FXMLActualizarDatosController {
         };
     }
 
+    /**
+     * Muestra una ventana de FXMLConsultarClienteDatos inicializada con
+     * los datos del cliente asociado a esta clase.
+     */
     private void showConsultarClienteDatos() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(

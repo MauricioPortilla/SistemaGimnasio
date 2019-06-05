@@ -114,6 +114,11 @@ public class FXMLMenuPrincipalController {
         };
     }
     
+    /**
+     * Lleva a cabo la acción del botón Registrar Pago.
+     * 
+     * @return el evento del botón
+     */
     private EventHandler<ActionEvent> registrarPagoButtonHandler() {
         return new EventHandler<ActionEvent>() {
             @Override
@@ -137,6 +142,11 @@ public class FXMLMenuPrincipalController {
         };
     }
     
+    /**
+     * Lleva a cabo la acción del botón Registrar Servicio.
+     * 
+     * @return el evento del botón
+     */
     private EventHandler<ActionEvent> registrarServicioButtonHandler() {
         return new EventHandler<ActionEvent>() {
             @Override
@@ -160,6 +170,11 @@ public class FXMLMenuPrincipalController {
         };
     }
 
+    /**
+     * Lleva a cabo la acción del botón Registrar Membresía.
+     * 
+     * @return el evento del botón
+     */
     private EventHandler<ActionEvent> registrarMembresiaButtonHandler() {
         return new EventHandler<ActionEvent>() {
             @Override

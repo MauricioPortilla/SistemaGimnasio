@@ -29,6 +29,16 @@ import sistemagimnasio.Cliente;
 import sistemagimnasio.ClienteDAO;
 import sistemagimnasio.IClienteDAO;
 
+/**
+ * FXMLConsultarClienteController es la clase que lleva el control de la
+ * interfaz FXMLConsultarCliente y se encarga de buscar un cliente por
+ * nombre en la base de datos para posteriormente mostrar sus datos en
+ * un FXMLConsultarClienteDatos.
+ * 
+ * @author Mauricio Cruz Portilla
+ * @version 1.0
+ * @since 2019/05/29
+ */
 public class FXMLConsultarClienteController {
 
     @FXML
@@ -54,6 +64,12 @@ public class FXMLConsultarClienteController {
 
     private final int NAME_LENGTH_FOR_FULLNAME = 3; // Mauricio Cruz Portilla
     private final int NAME_LENGTH_FOR_PARTIAL_FULLNAME = 2; // Mauricio Cruz
+    
+    /**
+     * Lleva a cabo la acción del botón de Consultar.
+     * 
+     * @return el evento del botón
+     */
     private EventHandler<ActionEvent> consultarButtonHandler() {
         return new EventHandler<ActionEvent>() {
             @Override
