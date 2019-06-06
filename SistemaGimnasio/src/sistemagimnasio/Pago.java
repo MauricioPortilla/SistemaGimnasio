@@ -31,9 +31,9 @@ public class Pago {
     /**
      * Crea una instancia Pago vacia.
      */
-
     public Pago() {
     }
+
     /**
      * Crea una instancia Pago sin recurrir a la base de datos
      * 
@@ -42,10 +42,8 @@ public class Pago {
      * @param idMembresia identificador de la membresía
      * @param monto monto a pagar
      * @param fecha fecha en la que se realiza el pago
-     * @param fechaVencimiento fecha en la que vence el pago
+     * @param fechaVencimiento fecha en la que vence la membresia pagada
      */
-    
-
     public Pago(
         int id, int idCliente, int idMembresia, int monto, LocalDate fecha, 
         LocalDate fechaVencimiento
@@ -73,7 +71,6 @@ public class Pago {
      * 
      * @return el identificador de pago
      */
-
     public int getId() {
         return id;
     }
@@ -83,7 +80,6 @@ public class Pago {
      * 
      * @return el monto a pagar
      */
-
     public int getMonto() {
         return monto;
     }
@@ -93,7 +89,6 @@ public class Pago {
      * 
      * @return la fecha en la que se realiza el pago
      */
-
     public LocalDate getFecha() {
         return fecha;
     }
@@ -103,7 +98,6 @@ public class Pago {
      * 
      * @param id nuevo identificador
      */
-
     public void setId(int id) {
         this.id = id;
     }
@@ -113,7 +107,6 @@ public class Pago {
      * 
      * @param monto nuevo monto
      */
-
     public void setMonto(int monto) {
         this.monto = monto;
     }
@@ -123,7 +116,6 @@ public class Pago {
      * 
      * @param fecha nueva fecha
      */
-
     public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
@@ -133,7 +125,6 @@ public class Pago {
      * 
      * @return el identificador del cliente 
      */
-
     public int getIdCliente() {
         return idCliente;
     }
@@ -143,7 +134,6 @@ public class Pago {
      * 
      * @return el identificador de la membresía
      */
-
     public int getIdMembresia() {
         return idMembresia;
     }
@@ -153,7 +143,6 @@ public class Pago {
      * 
      * @param idCliente nuevo identificador de cliente
      */
-
     public void setIdCliente(int idCliente) {
         this.idCliente = idCliente;
     }
@@ -163,7 +152,6 @@ public class Pago {
      * 
      * @param idMembresia nuevo idenificador de membresía
      */
-
     public void setIdMembresia(int idMembresia) {
         this.idMembresia = idMembresia;
     }
@@ -173,7 +161,6 @@ public class Pago {
      * 
      * @return la fecha en la que vence el pago
      */
-
     public LocalDate getFechaVencimiento() {
         return fechaVencimiento;
     }
@@ -183,7 +170,6 @@ public class Pago {
      * 
      * @param fechaVencimiento nueva fecha de vencimiento
      */
-
     public void setFechaVencimiento(LocalDate fechaVencimiento) {
         this.fechaVencimiento = fechaVencimiento;
     }

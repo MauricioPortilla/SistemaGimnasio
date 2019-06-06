@@ -109,7 +109,7 @@ public class FXMLConsultarClienteController {
                         ));
                         Stage stage = new Stage();
                         stage.setScene(new Scene((AnchorPane) loader.load()));
-                        stage.setTitle("Consultar cliente - Gimnasio");
+                        stage.setTitle("Consultar cliente - " + cliente.getFullName());
                         FXMLConsultarClienteDatosController controller = loader.
                             <FXMLConsultarClienteDatosController>getController();
                         controller.initData(cliente);

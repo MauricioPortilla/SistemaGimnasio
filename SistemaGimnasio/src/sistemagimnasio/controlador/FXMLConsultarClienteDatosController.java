@@ -12,6 +12,7 @@ package sistemagimnasio.controlador;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
@@ -26,11 +27,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 import sistemagimnasio.Cliente;
-import sistemagimnasio.IMembresiaDAO;
 import sistemagimnasio.Membresia;
-import sistemagimnasio.MembresiaDAO;
 import sistemagimnasio.Pago;
 
 /**
@@ -46,46 +44,37 @@ public class FXMLConsultarClienteDatosController {
 
     @FXML
     private ResourceBundle resources;
-
     @FXML
     private URL location;
-
     @FXML
     private Button actualizarButton;
-
     @FXML
     private Label fechaNacimientoLabel;
-
     @FXML
     private Label maternoLabel;
-
     @FXML
     private Label membresiaLabel;
-
     @FXML
     private Button modificarButton;
-
     @FXML
     private Label nombreLabel;
-
     @FXML
     private Label paternoLabel;
-
     @FXML
     private Label telefonoLabel;
-
     @FXML
     private Label fechaVencimientoLabel;
+    @FXML
+    private Button realizarPagoButton;
 
     private Cliente cliente;
     private Membresia membresiaCliente;
-
-    private IMembresiaDAO membresiaDAO = new MembresiaDAO();
 
     @FXML
     void initialize() {
         modificarButton.setOnAction(modificarButtonHandler());
         actualizarButton.setDisable(true);
+        realizarPagoButton.setOnAction(realizarPagoButtonHandler());
     }
 
     /**
@@ -95,7 +84,7 @@ public class FXMLConsultarClienteDatosController {
      */
     public void initData(Cliente cliente) {
         this.cliente = cliente;
-        this.membresiaCliente = membresiaDAO.getMembresia(cliente.getIdMembresia());
+        this.membresiaCliente = cliente.getMembresia();
         nombreLabel.setText(nombreLabel.getText() + " " + cliente.getNombre());
         paternoLabel.setText(paternoLabel.getText() + " " + cliente.getPaterno());
         maternoLabel.setText(maternoLabel.getText() + " " + cliente.getMaterno());
@@ -132,16 +121,48 @@ public class FXMLConsultarClienteDatosController {
                     ));
                     Stage stage = new Stage();
                     stage.setScene(new Scene((AnchorPane) loader.load()));
-                    stage.setTitle("Modificar datos del cliente - Gimnasio");
+                    stage.setTitle("Actualizar Datos");
                     FXMLActualizarDatosController controller = loader.
                         <FXMLActualizarDatosController>getController();
                     controller.initData(cliente);
                     stage.show();
                     ((Stage) modificarButton.getScene().getWindow()).close();
                 } catch (IOException e) {
+                    new Alert(AlertType.ERROR, "Ocurrió un error al abrir la ventana.").show();
+                }
+            }
+        };
+    }
+
+    /**
+     * Lleva a cabo la accion del boton de realizar pago. Abre la ventana de registrar pago.
+     * 
+     * @return el evento del boton
+     */
+    private EventHandler<ActionEvent> realizarPagoButtonHandler() {
+        return new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                if (cliente.getUltimoPago().getFechaVencimiento().isAfter(LocalDate.now())) {
                     new Alert(
-                        AlertType.ERROR, "Ocurrió un error al abrir el formulario de registro."
+                        AlertType.WARNING, "Este cliente aún tiene su membresía vigente"
                     ).show();
+                    return;
+                }
+                try {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource(
+                        "/sistemagimnasio/interfaz/FXMLRegistrarPago.fxml"
+                    ));
+                    Stage stage = new Stage();
+                    stage.setScene(new Scene((AnchorPane) loader.load()));
+                    stage.setTitle("Registrar Pago");
+                    FXMLRegistrarPagoController controller = loader.
+                        <FXMLRegistrarPagoController>getController();
+                    controller.initData(cliente);
+                    stage.show();
+                    ((Stage) modificarButton.getScene().getWindow()).close();
+                } catch (IOException e) {
+                    new Alert(AlertType.ERROR, "Ocurrió un error al abrir la ventana.").show();
                 }
             }
         };

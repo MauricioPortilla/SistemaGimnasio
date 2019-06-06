@@ -71,6 +71,11 @@ public class Cliente {
         return pagoDAO.getUltimoPago(this.id);
     }
 
+    public Membresia getMembresia() {
+        IMembresiaDAO membresiaDAO = new MembresiaDAO();
+        return membresiaDAO.getMembresia(idmembresia);
+    }
+
     /**
      * Establece un nuevo identificador al cliente
      * 
@@ -212,9 +217,19 @@ public class Cliente {
 
     /**
      * Regresa el domicilio del cliente.
+     * 
      * @return el domicilio del cliente
      */
     public String getDomicilio() {
         return domicilio;
+    }
+
+    /**
+     * Regresa el nombre completo del cliente.
+     * 
+     * @return el nombre completo del cliente
+     */
+    public String getFullName() {
+        return nombre + " " + paterno + ((materno != null) ? (" " + materno) : "");
     }
 }

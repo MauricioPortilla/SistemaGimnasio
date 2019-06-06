@@ -96,7 +96,7 @@ public class PagoDAO implements IPagoDAO {
     @Override
     public boolean insertPago(Pago pago) {
         if (SQL.executeUpdate(
-            "INSERT INTO pago VALUES (NULL, ?, ?, ?, ?)",
+            "INSERT INTO pago VALUES (NULL, ?, ?, ?, ?, ?)",
             new ArrayList<Object>() {
                 {
                     add(pago.getIdCliente());

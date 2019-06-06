@@ -36,5 +36,6 @@
     <Label id="fechaNacimientoLabel" fx:id="fechaVencimientoLabel" font="$x1" layoutX="31.0" layoutY="264.0" text="Fecha de vencimiento:" />
     <Button fx:id="actualizarButton" layoutX="504.0" layoutY="292.0" mnemonicParsing="false" text="Actualizar" />
     <Label id="telefonoLabel" fx:id="fechaNacimientoLabel" font="$x1" layoutX="31.0" layoutY="132.0" text="Fecha de Nacimiento:" />
+    <Button id="actualizarButton" fx:id="realizarPagoButton" layoutX="403.0" layoutY="292.0" mnemonicParsing="false" text="Realizar pago" />
   </children>
 </AnchorPane>

@@ -24,16 +24,16 @@
             <Font size="18.0" fx:id="x1" />
           </font>
         </Button>
-        <Button fx:id="cancelarButton" font="$x1" layoutX="448.0" layoutY="293.0" minHeight="28.94140625" mnemonicParsing="false" onAction="#accionCancelar" prefHeight="40.0" prefWidth="117.0" text="Cancelar" />
+        <Button fx:id="cancelarButton" font="$x1" layoutX="448.0" layoutY="293.0" minHeight="28.94140625" mnemonicParsing="false" prefHeight="40.0" prefWidth="117.0" text="Cancelar" />
         <Label font="$x1" layoutX="23.0" layoutY="63.0" text="Nombre:" />
         <Label layoutX="108.0" layoutY="69.0" text="" />
-        <Label fx:id="labelNombre" layoutX="143.0" layoutY="71.0" text="...." />
+        <Label fx:id="labelNombre" layoutX="98.0" layoutY="69.0" text="NOMBRE" />
         <Label font="$x1" layoutX="23.0" layoutY="104.0" text="Membresía:" />
-        <Label fx:id="labelMembresia" layoutX="143.0" layoutY="110.0" text="..." />
+        <Label fx:id="labelMembresia" layoutX="123.0" layoutY="110.0" prefWidth="70.0" text="MEMBRESIA" />
         <Label font="$x1" layoutX="20.0" layoutY="150.0" text="Fecha:" />
         <Label font="$x1" layoutX="20.0" layoutY="228.0" text="Mensualidades a pagar" />
-        <Label font="$x1" layoutX="356.0" layoutY="150.0" text="Registrar pago" />
-        <TextField fx:id="textPago" layoutX="356.0" layoutY="180.0" prefHeight="21.9609375" prefWidth="209.0" />
+        <Label font="$x1" layoutX="356.0" layoutY="147.0" text="Total a pagar" />
+        <TextField fx:id="textPago" layoutX="356.0" layoutY="174.0" prefHeight="21.9609375" prefWidth="209.0" />
         <TextField fx:id="textFecha" layoutX="20.0" layoutY="174.0" prefWidth="200.0" promptText="26/05/2019" />
         <TextField id="textMensualidadePagar" fx:id="textMensualidadPagar" layoutX="20.0" layoutY="252.0" prefWidth="200.0" />
       </children>

@@ -37,22 +37,20 @@ public class FXMLMenuPrincipalController {
 
     @FXML
     private ResourceBundle resources;
-
     @FXML
     private URL location;
-
     @FXML
     private Button registrarClienteButton;
-    
-    @FXML private Button registrarPagoButton;
-    @FXML private Button registrarServicioButton;
-    @FXML private Button consultarClienteButton;
-    @FXML private Button registrarMembresiaButton;
+    @FXML
+    private Button registrarServicioButton;
+    @FXML
+    private Button consultarClienteButton;
+    @FXML
+    private Button registrarMembresiaButton;
 
     @FXML
     void initialize() {
         registrarClienteButton.setOnAction(registrarClienteButtonHandler());
-        registrarPagoButton.setOnAction(registrarPagoButtonHandler());
         registrarServicioButton.setOnAction(registrarServicioButtonHandler());
         consultarClienteButton.setOnAction(consultarClienteButtonHandler());
         registrarMembresiaButton.setOnAction(registrarMembresiaButtonHandler());
@@ -74,14 +72,12 @@ public class FXMLMenuPrincipalController {
                     ));
                     Stage stage = new Stage();
                     stage.setScene(new Scene((AnchorPane) loader.load()));
-                    stage.setTitle("Registrar cliente - Gimnasio");
+                    stage.setTitle("Registrar Cliente");
                     stage.show();
                 } catch (IOException e) {
                     new Alert(
                         AlertType.ERROR, "Ocurrió un error al abrir el formulario de registro."
                     ).show();
-                    System.out.println(e.getMessage());
-                    System.out.println(e.getCause());
                 }
             }
         };
@@ -115,34 +111,6 @@ public class FXMLMenuPrincipalController {
     }
     
     /**
-     * Lleva a cabo la acción del botón Registrar Pago.
-     * 
-     * @return el evento del botón
-     */
-    private EventHandler<ActionEvent> registrarPagoButtonHandler() {
-        return new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource(
-                        "/sistemagimnasio/interfaz/FXMLRegistrarPago.fxml"
-                    ));
-                    Stage stage = new Stage();
-                    stage.setScene(new Scene((AnchorPane) loader.load()));
-                    stage.setTitle("Registrar cliente - Gimnasio");
-                    stage.show();
-                } catch (IOException e) {
-                    new Alert(
-                        AlertType.ERROR, "Ocurrió un error."
-                    ).show();
-                    System.out.println(e.getMessage());
-                    System.out.println(e.getCause());
-                }
-            }
-        };
-    }
-    
-    /**
      * Lleva a cabo la acción del botón Registrar Servicio.
      * 
      * @return el evento del botón
@@ -157,14 +125,13 @@ public class FXMLMenuPrincipalController {
                     ));
                     Stage stage = new Stage();
                     stage.setScene(new Scene((AnchorPane) loader.load()));
-                    stage.setTitle("Registrar servicio - Gimnasio");
+                    stage.setTitle("Registrar Servicio");
                     stage.show();
                 } catch (IOException e) {
                     new Alert(
-                        AlertType.ERROR, "Ocurrió un error."
+                        AlertType.ERROR, "Ocurrió un error al abrir la ventana de registro."
                     ).show();
                     System.out.println(e.getMessage());
-                    System.out.println(e.getCause());
                 }
             }
         };
@@ -185,7 +152,7 @@ public class FXMLMenuPrincipalController {
                     ));
                     Stage stage = new Stage();
                     stage.setScene(new Scene((AnchorPane) loader.load()));
-                    stage.setTitle("Registrar membresia - Gimnasio");
+                    stage.setTitle("Registrar membresia");
                     stage.show();
                 } catch (IOException e) {
                     new Alert(

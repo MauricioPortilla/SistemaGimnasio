@@ -26,7 +26,6 @@ import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
-import sistemagimnasio.Engine;
 import sistemagimnasio.IMembresiaDAO;
 import sistemagimnasio.IServicioDAO;
 import sistemagimnasio.Membresia;
@@ -34,6 +33,14 @@ import sistemagimnasio.MembresiaDAO;
 import sistemagimnasio.Servicio;
 import sistemagimnasio.ServicioDAO;
 
+/**
+ * FXMLRegistrarMembresiaController es la clase que lleva el control de la interfaz de
+ * FXMLRegistrarMembresia, la cual registra una membresia nueva en la base de datos.
+ * 
+ * @author Mauricio Cruz Portilla
+ * @version 1.0
+ * @since 2019/05/31
+ */
 public class FXMLRegistrarMembresiaController {
 
     @FXML

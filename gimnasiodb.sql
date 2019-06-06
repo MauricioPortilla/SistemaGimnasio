@@ -87,6 +87,7 @@ CREATE TABLE IF NOT EXISTS `gimnasiodb`.`Pago` (
   `idMembresia` INT NOT NULL,
   `monto` INT NOT NULL,
   `fecha` DATE NOT NULL,
+  `fechaVencimiento` DATE NOT NULL,
   PRIMARY KEY (`idPago`),
   INDEX `fk_Pago_Cliente1_idx` (`idCliente` ASC) VISIBLE,
   INDEX `fk_Pago_Membresia1_idx` (`idMembresia` ASC) VISIBLE,
@@ -110,8 +111,8 @@ CREATE TABLE IF NOT EXISTS `gimnasiodb`.`HorarioServicio` (
   `idHorarioServicio` INT NOT NULL AUTO_INCREMENT,
   `idServicio` INT NOT NULL,
   `dia` VARCHAR(10) NOT NULL,
-  `horaInicio` DATETIME NOT NULL,
-  `horaFin` DATETIME NOT NULL,
+  `horaInicio` TIME NOT NULL,
+  `horaFin` TIME NOT NULL,
   PRIMARY KEY (`idHorarioServicio`),
   INDEX `fk_HorarioServicio_Servicio1_idx` (`idServicio` ASC) VISIBLE,
   CONSTRAINT `fk_HorarioServicio_Servicio1`
