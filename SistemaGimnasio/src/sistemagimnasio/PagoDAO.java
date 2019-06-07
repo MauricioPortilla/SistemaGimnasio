@@ -64,8 +64,8 @@ public class PagoDAO implements IPagoDAO {
 
     @Override
     public Pago getUltimoPago(int idCliente) {
-        Pago pago = new Pago();
         try {
+            Pago pago = new Pago();
 			SQL.executeQuery(
 			    "SELECT * FROM pago WHERE idCliente = ? ORDER BY idPago DESC LIMIT 1",
 			    new ArrayList<Object>() {
@@ -87,10 +87,11 @@ public class PagoDAO implements IPagoDAO {
 			}, () -> {
 			    return false;
 			});
+            return pago;
 		} catch (Exception e) {
-			new Alert(AlertType.ERROR, "Ocurrió un error al momento de obtener los datos").show();
+            new Alert(AlertType.ERROR, "Ocurrió un error al momento de obtener los datos").show();
+            return null;
 		}
-        return pago;
     }
 
     @Override

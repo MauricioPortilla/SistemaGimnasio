@@ -143,12 +143,17 @@ public class FXMLConsultarClienteDatosController {
         return new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                if (cliente.getUltimoPago().getFechaVencimiento().isAfter(LocalDate.now())) {
-                    new Alert(
-                        AlertType.WARNING, "Este cliente aún tiene su membresía vigente"
-                    ).show();
-                    return;
-                }
+				Pago ultimoPago = cliente.getUltimoPago();
+				if (ultimoPago != null) {
+					if (ultimoPago.isLoaded()) {
+						if (ultimoPago.getFechaVencimiento().isAfter(LocalDate.now())) {
+							new Alert(
+								AlertType.WARNING, "Este cliente aún tiene su membresía vigente"
+							).show();
+							return;
+						}
+					}
+				}
                 try {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource(
                         "/sistemagimnasio/interfaz/FXMLRegistrarPago.fxml"
