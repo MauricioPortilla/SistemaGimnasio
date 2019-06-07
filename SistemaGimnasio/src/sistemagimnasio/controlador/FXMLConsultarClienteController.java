@@ -95,6 +95,9 @@ public class FXMLConsultarClienteController {
                     String nombre = "";
                     for (int i = 0; i < nombreClienteSplit.length - 2; i++) {
                         nombre += nombreClienteSplit[i];
+                        if (i >= 0 && i < nombreClienteSplit.length - 3) {
+                            nombre += " ";
+                        }
                     }
                     cliente = clienteDAO.getCliente(
                         nombre, 
